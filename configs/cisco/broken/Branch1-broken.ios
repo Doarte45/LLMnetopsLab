@@ -1,0 +1,32 @@
+hostname Branch1
+!
+no ip domain-lookup
+!
+interface FastEthernet0/0
+ ip address 10.10.4.1 255.255.254.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Serial0/0/0
+ ip address 172.16.7.2 255.255.255.252
+ clock rate 64000
+ no shutdown
+!
+interface Serial0/0/1
+ ip address 172.16.7.9 255.255.255.252
+ no shutdown
+!
+router ospf 1
+ passive-interface FastEthernet0/0
+ network 10.10.4.0 0.0.1.255 area 0
+ network 172.16.7.0 0.0.0.3 area 0
+ network 172.16.7.8 0.0.0.3 area 0
+!
+ip classless
+!
+line con 0
+line vty 0 4
+ login
+!
+end

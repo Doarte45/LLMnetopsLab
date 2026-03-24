@@ -1,0 +1,11 @@
+set system host-name Branch2
+
+set interfaces ethernet eth0 address 10.10.6.1/23
+set interfaces ethernet eth1 address 172.16.7.10/30
+set interfaces ethernet eth2 address 172.16.7.6/30
+set interfaces ethernet eth2 disable
+
+set protocols ospf area 0 network 10.10.4.0/22
+set protocols ospf area 0 network 172.16.7.4/30
+set protocols ospf area 0 network 172.16.7.8/30
+set protocols ospf interface eth2 passive
