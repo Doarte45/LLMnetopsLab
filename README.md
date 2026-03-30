@@ -23,27 +23,25 @@ Three routers (HQ, Branch1, Branch2) are configured with OSPF but contain **6 in
 ## File Structure
 
 ```
+claude-prompt/
+└── CLAUDE.md             # Prompt for Claude Code troubleshooting runs
 configs/
 ├── VyOS/
-│   ├── broken/       # Starting configs with intentional errors
-│   ├── corrected/    # Answer key — fully working configs
-│   └── CCAccess/     # SSH + eth3 setup for Claude Code remote access
-├── cisco/            # Original Cisco IOS scripts for comparison
+│   ├── broken/           # Starting configs with intentional errors
+│   ├── corrected/        # Answer key — fully working configs
+│   └── CCAccess/         # SSH + eth3 setup for Claude Code remote access
+├── cisco/                # Original Cisco IOS scripts for comparison
 │   ├── broken/
 │   └── corrected/
-└── vpcs/             # VPCS startup configs (PC1, PC2, PC3)
+└── vpcs/                 # VPCS startup configs (PC1, PC2, PC3)
 gns3/
-└── topology-notes.md   # GNS3 wiring and setup guide
-lab-guide/
-└── 11.6.3-OSPF-Troubleshooting-VyOS.md   # Full student lab document
-results/
-├── runs/             # Claude's JSON diagnostic output (run_001.json, ...)
-└── verify/           # verify_configs.py JSON output (run_001.json, ...)
+└── topology-notes.md     # GNS3 wiring and setup guide
 scripts/
-├── verify_configs.py # Validates fixes against answer keys, writes JSON results
-├── parse_results.py  # Analyzes JSON outputs and computes reasoning metrics
-├── push_configs.py   # Loads broken/corrected configs to routers via SSH
-└── connect_routers.py # Tests SSH connectivity to all routers
+├── verify_configs.py     # Validates fixes against answer keys, writes JSON results
+├── parse_results.py      # Analyzes JSON outputs and computes reasoning metrics
+├── parse_transcripts.py  # Parses Claude Code transcript files
+├── push_configs.py       # Loads broken/corrected configs to routers via SSH
+└── connect_routers.py    # Tests SSH connectivity to all routers
 ```
 
 ## Quick Start
@@ -52,7 +50,7 @@ scripts/
 2. Wire the topology per `gns3/topology-notes.md`.
 3. Load `configs/VyOS/broken/*.set` (or `.boot`) onto each router.
 4. Load `configs/vpcs/*.vpc` onto each VPCS node.
-5. Hand students the lab guide from `lab-guide/`.
+5. Point Claude Code at the lab using the prompt in `claude-prompt/CLAUDE.md`.
 
 ## Errors Summary
 
