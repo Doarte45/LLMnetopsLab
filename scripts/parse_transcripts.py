@@ -14,6 +14,7 @@ Usage:
 import argparse
 import io
 import json
+import os.path
 import re
 import sys
 from collections import Counter
@@ -50,6 +51,10 @@ FIX_KEYWORDS = re.compile(
     r"\b(set|delete|configure|commit|save|load|merge|copy|write)\b",
     re.IGNORECASE,
 )
+
+# Regex to extract .py filenames from Bash commands that run Python scripts.
+# Matches "python3 script.py" but not "python3 -c ..." or "python3 -m ...".
+_PY_SCRIPT_RE = re.compile(r"python3?\s+(?!-[cm]\b)(\S+\.py)\b")
 
 
 # ---------------------------------------------------------------------------
@@ -248,6 +253,58 @@ def _extract_bash_commands(entries: list[dict]) -> list[str]:
     return commands
 
 
+def _extract_effective_commands(entries: list[dict]) -> list[str]:
+    """Extract Bash commands with written-file content resolved.
+
+    Scans entries in order, tracking the latest content of files created via
+    the Write tool.  When a Bash command executes a known Python script
+    (e.g. ``python3 fix.py 2>&1``), the script's content is appended to the
+    command string so that IP addresses and keywords are discoverable.
+
+    Note: Edit tool patches are *not* tracked — the initial Write content is
+    used.  In practice, Edit diffs in this dataset do not change IP sets or
+    keyword categories, so this is an acceptable simplification.
+    """
+    written_files: dict[str, str] = {}   # basename -> latest content
+    effective_commands: list[str] = []
+
+    for entry in entries:
+        if entry.get("type") != "assistant":
+            continue
+        for block in entry.get("message", {}).get("content", []):
+            if block.get("type") != "tool_use":
+                continue
+            name = block.get("name", "")
+
+            # Track Write tool calls to .py files
+            if name == "Write":
+                file_path = block.get("input", {}).get("file_path", "")
+                if file_path.endswith(".py"):
+                    basename = os.path.basename(file_path)
+                    content = block.get("input", {}).get("content", "")
+                    if content:
+                        written_files[basename] = content
+
+            # Build effective command for Bash tool calls
+            elif name == "Bash":
+                cmd = block.get("input", {}).get("command", "")
+                if not cmd:
+                    continue
+                # Check if the command runs any known written Python scripts
+                referenced_scripts = _PY_SCRIPT_RE.findall(cmd)
+                if referenced_scripts:
+                    parts = [cmd]
+                    for script_name in referenced_scripts:
+                        basename = os.path.basename(script_name)
+                        if basename in written_files:
+                            parts.append(written_files[basename])
+                    effective_commands.append("\n".join(parts))
+                else:
+                    effective_commands.append(cmd)
+
+    return effective_commands
+
+
 def _classify_command(cmd: str, is_after_first_fix: bool) -> str:
     """Classify a bash command as diagnose, fix, or verify.
 
@@ -267,21 +324,13 @@ def _classify_command(cmd: str, is_after_first_fix: bool) -> str:
 
 def extract_behavior(entries: list[dict]) -> dict:
     """Extract behavioral metrics: device access order, strategy phases, retries."""
-    commands = _extract_bash_commands(entries)
+    raw_commands = _extract_bash_commands(entries)
+    effective_commands = _extract_effective_commands(entries)
 
-    # --- Device access sequence ---
-    access_order = []
-    seen_ips = set()
-    for cmd in commands:
-        for ip, name in ROUTER_IPS.items():
-            if ip in cmd and name not in seen_ips:
-                access_order.append(name)
-                seen_ips.add(name)
-
-    # --- Phase classification ---
+    # --- Phase classification (uses effective commands for keyword detection) ---
     phases = []
     first_fix_seen = False
-    for cmd in commands:
+    for cmd in effective_commands:
         phase = _classify_command(cmd, first_fix_seen)
         if phase == "fix":
             first_fix_seen = True
@@ -290,7 +339,33 @@ def extract_behavior(entries: list[dict]) -> dict:
     phase_counts = Counter(phases)
     total = len(phases) if phases else 1  # avoid div by zero
 
-    # --- Retry detection ---
+    # --- Fix target order (position-based within fix commands) ---
+    # Uses position of each router IP in the command text to determine the
+    # order the agent chose to fix devices, avoiding dict-iteration artifacts.
+    fix_order: list[str] = []
+    fix_seen: set[str] = set()
+    for cmd, phase in zip(effective_commands, phases):
+        if phase != "fix":
+            continue
+        ip_positions = []
+        for ip, name in ROUTER_IPS.items():
+            pos = cmd.find(ip)
+            if pos != -1:
+                ip_positions.append((pos, name))
+        ip_positions.sort()  # earliest appearance in text first
+        for _, name in ip_positions:
+            if name not in fix_seen:
+                fix_order.append(name)
+                fix_seen.add(name)
+
+    # --- Devices touched per phase ---
+    phase_devices: dict[str, set[str]] = {"diagnose": set(), "fix": set(), "verify": set()}
+    for cmd, phase in zip(effective_commands, phases):
+        for ip, name in ROUTER_IPS.items():
+            if ip in cmd:
+                phase_devices[phase].add(name)
+
+    # --- Retry detection (uses raw commands for exact-match comparison) ---
     # A retry is when the same command (normalized) appears after an error
     error_tool_ids = set()
     for entry in entries:
@@ -311,12 +386,12 @@ def extract_behavior(entries: list[dict]) -> dict:
 
     # Count commands that were retried after failure
     failed_cmds = [tool_id_to_cmd.get(tid, "") for tid in error_tool_ids if tid in tool_id_to_cmd]
-    all_cmds_set = set(commands)
-    retries = sum(1 for fc in failed_cmds if fc and commands.count(fc) > 1)
+    retries = sum(1 for fc in failed_cmds if fc and raw_commands.count(fc) > 1)
 
     return {
-        "device_access_order": access_order,
-        "total_bash_commands": len(commands),
+        "fix_order": fix_order,
+        "phase_devices": {k: sorted(v) for k, v in phase_devices.items()},
+        "total_bash_commands": len(raw_commands),
         "phase_counts": {
             "diagnose": phase_counts.get("diagnose", 0),
             "fix": phase_counts.get("fix", 0),
@@ -391,11 +466,20 @@ def compute_aggregate(per_run: list[dict]) -> dict:
     # --- Behavior ---
     bash_counts = [r["behavior"]["total_bash_commands"] for r in per_run]
 
-    # Device access order frequency
-    access_patterns: Counter = Counter()
+    # Fix target order frequency
+    fix_order_patterns: Counter = Counter()
     for r in per_run:
-        pattern = " → ".join(r["behavior"]["device_access_order"]) or "(none)"
-        access_patterns[pattern] += 1
+        pattern = " → ".join(r["behavior"]["fix_order"]) or "(none)"
+        fix_order_patterns[pattern] += 1
+
+    # Device coverage per phase (how many runs touched each device in each phase)
+    phase_device_counts: dict[str, Counter] = {
+        "diagnose": Counter(), "fix": Counter(), "verify": Counter(),
+    }
+    for r in per_run:
+        for phase in ("diagnose", "fix", "verify"):
+            for dev in r["behavior"]["phase_devices"].get(phase, []):
+                phase_device_counts[phase][dev] += 1
 
     # Phase breakdowns
     phase_pcts = {
@@ -425,7 +509,8 @@ def compute_aggregate(per_run: list[dict]) -> dict:
         },
         "behavior": {
             "bash_commands": stat_block([float(v) for v in bash_counts]),
-            "access_patterns": dict(access_patterns.most_common()),
+            "fix_order_patterns": dict(fix_order_patterns.most_common()),
+            "phase_device_counts": {k: dict(v.most_common()) for k, v in phase_device_counts.items()},
             "phase_pcts": {k: stat_block(v) for k, v in phase_pcts.items()},
             "retries": stat_block([float(v) for v in retry_counts]),
             "api_errors": sum(api_error_counts),
@@ -459,7 +544,7 @@ def format_table(aggregate: dict, per_run: list[dict]) -> str:
     header = (
         f"{'Run':<10} {'Duration':>8} {'OutTok':>7} {'InTok':>7}"
         f" {'CacheCr':>7} {'CacheRd':>8} {'Cost':>7} {'Tools':>5} {'Errs':>4}"
-        f"  {'Access Order':<25} {'D/F/V'}"
+        f"  {'Fix Target Order':<25} {'D/F/V'}"
     )
     lines.append(header)
     lines.append(f"{'-' * 100}")
@@ -469,14 +554,14 @@ def format_table(aggregate: dict, per_run: list[dict]) -> str:
         cost = r["cost"]["total"]
         tu = r["tool_usage"]
         beh = r["behavior"]
-        access = "→".join(beh["device_access_order"]) or "-"
+        fix_ord = "→".join(beh["fix_order"]) or "-"
         pc = beh["phase_counts"]
         dfv = f"{pc['diagnose']}/{pc['fix']}/{pc['verify']}"
         lines.append(
             f"{r['name']:<10} {dur:>7} {tok['output_tokens']:>7,} {tok['input_tokens']:>7,}"
             f" {tok['cache_creation_input_tokens']:>7,} {tok['cache_read_input_tokens']:>8,}"
             f" ${cost:>6.3f} {tu['total_tool_calls']:>5} {tu['error_count']:>4}"
-            f"  {access:<25} {dfv}"
+            f"  {fix_ord:<25} {dfv}"
         )
 
     # --- Duration stats ---
@@ -560,11 +645,20 @@ def format_table(aggregate: dict, per_run: list[dict]) -> str:
     lines.append("BEHAVIORAL ANALYSIS")
     lines.append(f"{'-' * 90}")
 
-    # Access patterns
-    lines.append("  Device access order:")
-    for pattern, count in agg["behavior"]["access_patterns"].items():
+    # Fix target order
+    lines.append("  Fix target order (position-based priority):")
+    for pattern, count in agg["behavior"]["fix_order_patterns"].items():
         bar = "#" * count
         lines.append(f"    {pattern:<35} {bar} ({count}/{n})")
+
+    # Device coverage per phase
+    lines.append("")
+    lines.append("  Device coverage per phase (runs touching each device):")
+    for phase in ["diagnose", "fix", "verify"]:
+        devs = agg["behavior"]["phase_device_counts"].get(phase, {})
+        if devs:
+            parts = [f"{dev}={cnt}/{n}" for dev, cnt in devs.items()]
+            lines.append(f"    {phase.capitalize():<10} {', '.join(parts)}")
 
     # Phase breakdown
     lines.append("")
