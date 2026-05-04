@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-04-09T21:27:52.965717+00:00",
+  "errors": [
+    {
+      "id": 1,
+      "router": "HQ",
+      "description": "Wrong IP on eth0 (10.10.10.1/22 \u2192 10.10.0.1/22)",
+      "status": "FIXED"
+    },
+    {
+      "id": 2,
+      "router": "HQ",
+      "description": "Wrong OSPF network mask (10.10.0.0/21 \u2192 10.10.0.0/22)",
+      "status": "FIXED"
+    },
+    {
+      "id": 3,
+      "router": "HQ",
+      "description": "Missing default-information originate",
+      "status": "BROKEN"
+    },
+    {
+      "id": 4,
+      "router": "Branch2",
+      "description": "eth2 still disabled",
+      "status": "FIXED"
+    },
+    {
+      "id": 5,
+      "router": "Branch2",
+      "description": "Wrong passive interface (eth2 \u2192 eth0)",
+      "status": "FIXED"
+    },
+    {
+      "id": 6,
+      "router": "Branch2",
+      "description": "Wrong OSPF LAN network mask (10.10.4.0/22 \u2192 10.10.6.0/23)",
+      "status": "FIXED"
+    }
+  ],
+  "routers": {
+    "HQ": {
+      "connection": "ok",
+      "extra_commands": [
+        "set protocols ospf default-information originate always"
+      ],
+      "missing_commands": [],
+      "config_matches_answer_key": false
+    },
+    "Branch1": {
+      "connection": "ok",
+      "extra_commands": [],
+      "missing_commands": [],
+      "config_matches_answer_key": true
+    },
+    "Branch2": {
+      "connection": "ok",
+      "extra_commands": [
+        "set protocols ospf interface eth2"
+      ],
+      "missing_commands": [],
+      "config_matches_answer_key": false
+    }
+  },
+  "score": {
+    "fixed": 5,
+    "total": 6,
+    "percentage": 83
+  }
+}
