@@ -42,13 +42,21 @@ scripts/
 ├── parse_transcripts.py  # Parses Claude Code transcript files
 ├── push_configs.py       # Loads broken/corrected configs to routers via SSH
 └── connect_routers.py    # Tests SSH connectivity to all routers
+notebooks/
+└── visualize_results.ipynb  # Generates plots from parse_results / parse_transcripts output
+results/
+├── verify/               # Per-run verify_configs.py output (run_001.json ... run_050.json)
+└── cctranscripts/        # Claude Code transcripts (r001.jsonl ... r050.jsonl) + helpers
+    ├── extract_bash.py       # Pulls Bash tool calls out of a transcript JSONL
+    └── extract_messages.py   # Pulls assistant/user messages out of a transcript JSONL
+requirements-viz.txt      # Notebook deps: matplotlib, seaborn, pandas, jupyter
 ```
 
 ## Quick Start
 
 1. Import VyOS and VPCS nodes into GNS3.
 2. Wire the topology per `gns3/topology-notes.md`.
-3. Load `configs/VyOS/broken/*.set` (or `.boot`) onto each router.
+3. Load `configs/VyOS/broken/*.set` (or `.boot`) onto each router — or run `python scripts/push_configs.py broken` (use `corrected` for the answer key) once SSH is reachable.
 4. Load `configs/vpcs/*.vpc` onto each VPCS node.
 5. Point Claude Code at the lab using the prompt in `claude-prompt/CLAUDE.md`.
 
@@ -86,8 +94,32 @@ python scripts/verify_configs.py --run-number 5
 # Skip file output (stdout only)
 python scripts/verify_configs.py --no-file
 
-# Analyze all runs with cross-validation against verify outputs
-python scripts/parse_results.py results/runs/ --verify-dir results/verify/
+# Aggregate verify_configs.py JSON outputs into fix-rate / per-error / per-router stats
+python scripts/parse_results.py results/verify/
+
+# Parse Claude Code transcripts for duration, token cost, tool usage, and behavioral metrics
+python scripts/parse_transcripts.py results/cctranscripts/
+```
+
+Both `parse_results.py` and `parse_transcripts.py` accept `--format json|table` and `--output <path>` to write a summary file.
+
+To dig into a single Claude Code run, use the transcript helpers in `results/cctranscripts/`:
+
+```bash
+# Show every Bash command Claude ran (filter to a keyword if needed)
+python results/cctranscripts/extract_bash.py results/cctranscripts/r037.jsonl --filter ospf
+
+# Show assistant/user messages (add --with-thinking to include thinking blocks)
+python results/cctranscripts/extract_messages.py results/cctranscripts/r037.jsonl
+```
+
+## Visualization
+
+Plots over the 50 captured runs live in `notebooks/visualize_results.ipynb`. Install the extra deps and launch Jupyter:
+
+```bash
+pip install -r requirements-viz.txt
+jupyter notebook notebooks/visualize_results.ipynb
 ```
 
 ## Requirements
@@ -95,3 +127,5 @@ python scripts/parse_results.py results/runs/ --verify-dir results/verify/
 - **GNS3** 2.2+
 - **VyOS** 2026.02 rolling (qcow2 image)
 - **VPCS** (built into GNS3)
+- **Python** 3.10+ with `netmiko` (used by `push_configs.py`, `verify_configs.py`, `connect_routers.py`)
+- **Optional (visualization):** `pip install -r requirements-viz.txt` for the Jupyter notebook (`matplotlib`, `seaborn`, `pandas`, `jupyter`)
