@@ -1,0 +1,4 @@
+set system host-name ISP-A
+
+set interfaces ethernet eth0 address 203.0.113.1/30
+set interfaces loopback lo address 8.8.8.8/32

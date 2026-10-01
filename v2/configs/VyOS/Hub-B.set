@@ -1,0 +1,11 @@
+set system host-name Hub-B
+
+set interfaces ethernet eth0 address 172.16.20.1/30
+set interfaces ethernet eth1 address 172.16.20.5/30
+
+set protocols ospf parameters router-id 10.255.0.3
+set protocols ospf area 10 network 172.16.20.0/30
+set protocols ospf area 10 range 10.1.0.0/16
+set protocols ospf area 10 virtual-link 10.255.0.2
+set protocols ospf area 20 network 172.16.20.4/30
+set protocols ospf area 20 range 10.2.0.0/16

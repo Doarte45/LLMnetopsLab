@@ -1,0 +1,17 @@
+set system host-name HQ-Edge
+
+set interfaces ethernet eth0 address 172.16.1.1/30
+set interfaces ethernet eth1 address 203.0.113.2/30
+set interfaces ethernet eth2 address 203.0.113.6/30
+
+set protocols ospf parameters router-id 10.255.0.1
+set protocols ospf area 0 network 172.16.1.0/30
+set protocols ospf default-information originate
+
+set protocols static route 0.0.0.0/0 next-hop 203.0.113.1 distance 1
+set protocols static route 0.0.0.0/0 next-hop 203.0.113.5 distance 10
+
+set nat source rule 100 outbound-interface name eth1
+set nat source rule 100 translation address masquerade
+set nat source rule 110 outbound-interface name eth2
+set nat source rule 110 translation address masquerade

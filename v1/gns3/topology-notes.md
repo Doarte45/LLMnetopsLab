@@ -9,16 +9,7 @@
 
 ## Wiring Diagram
 
-```
-              HQ
-         eth1/  \eth2    eth3──Cloud
-            /    \
-      eth1 /      \eth2
-      Branch1----Branch2
-          eth2  eth1
-     eth3│          │eth3
-      Cloud       Cloud
-```
+![alt text](v1.png)
 
 ### Cable Connections
 
