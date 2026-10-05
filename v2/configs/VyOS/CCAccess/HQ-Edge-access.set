@@ -1,3 +1,2 @@
-set system host-name HQ-Edge
 set interfaces ethernet eth3 address 192.168.122.11/24
 set service ssh port 22

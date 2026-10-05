@@ -36,7 +36,7 @@ Work from the live devices and this document. Don't search this machine for conf
      ISP-A  lo 8.8.8.8                       ISP-B  lo 1.1.1.1
           \  203.0.113.0/30                 /  203.0.113.4/30
            \                               /
-            +---------- HQ-Edge ----------+           ASBR, NAT to both ISPs
+            +---------- HQ-Edge ----------+           ASBR, eBGP + NAT to both ISPs
                            |  172.16.1.0/30                            area 0
                          Hub-A                        ABR 0/10
            +---------------+----------------+
@@ -46,7 +46,7 @@ Work from the live devices and this document. Don't search this machine for conf
       10.1.1.0/24     10.1.2.0/24      10.1.3.0/24
                                             |  172.16.20.0/30          area 10
                                           Hub-B                       ABR 10/20
-                                            |  172.16.20.4/30          area 20
+                                            |  172.16.20.4/30          area 20 (totally stubby)
                                         Branch-4
                                 10.2.1.0/24    10.2.2.0/24
 
@@ -58,8 +58,8 @@ Work from the live devices and this document. Don't search this machine for conf
 | Device | Interface | Address | Connects to | OSPF |
 |---|---|---|---|---|
 | HQ-Edge | eth0 | 172.16.1.1/30 | Hub-A eth0 | area 0 |
-| HQ-Edge | eth1 | 203.0.113.2/30 | ISP-A eth0 | not in OSPF |
-| HQ-Edge | eth2 | 203.0.113.6/30 | ISP-B eth0 | not in OSPF |
+| HQ-Edge | eth1 | 203.0.113.2/30 | ISP-A eth0 | not in OSPF (eBGP to ISP-A) |
+| HQ-Edge | eth2 | 203.0.113.6/30 | ISP-B eth0 | not in OSPF (eBGP to ISP-B) |
 | Hub-A | eth0 | 172.16.1.2/30 | HQ-Edge eth0 | area 0 |
 | Hub-A | eth1 | 172.16.10.1/30 | Branch-1 ether1 | area 10 |
 | Hub-A | eth2 | 172.16.10.5/30 | Branch-2 ether1 | area 10 |
@@ -77,15 +77,15 @@ Work from the live devices and this document. Don't search this machine for conf
 | Branch-4 | ether2 | 10.2.1.1/24 | LAN: B4-PC1, B4-PC2 | area 20, passive |
 | Branch-4 | ether3 | 10.2.2.1/24 | LAN: B4-PC3, B4-PC4 | area 20, passive |
 | ISP-A | eth0 | 203.0.113.1/30 | HQ-Edge eth1 | none |
-| ISP-A | lo | 8.8.8.8/32 | test target | none |
+| ISP-A | lo | 8.8.8.8/32 | test target, advertised in BGP | none |
 | ISP-B | eth0 | 203.0.113.5/30 | HQ-Edge eth2 | none |
-| ISP-B | lo | 1.1.1.1/32 | test target | none |
+| ISP-B | lo | 1.1.1.1/32 | test target, advertised in BGP | none |
 
 OSPF router IDs: HQ-Edge 10.255.0.1, Hub-A 10.255.0.2, Hub-B 10.255.0.3, Branch-1 10.255.1.1, Branch-2 10.255.1.2, Branch-3 10.255.1.3, Branch-4 10.255.2.1.
 
 ### Hosts
 
-Every host has a static address on eth0 and uses its branch router's LAN address as the default gateway.
+Every host has a static address on eth0 and uses its branch router's LAN address as the default gateway. B4-PC3 and B4-PC4 are on the guest LAN (see Design).
 
 | Host | Address | Gateway | Host | Address | Gateway |
 |---|---|---|---|---|---|
@@ -101,36 +101,40 @@ This section and the tables above are the source of truth. When the live network
 
 - **Areas.** All routers except the ISPs run OSPFv2. Area 0 is the HQ-Edge to Hub-A link. Area 10 contains Hub-A's three branch links, Branch-1/2/3 and the Branch-3 to Hub-B link, and Hub-A is its ABR to area 0. Area 20 contains the Hub-B to Branch-4 link and Branch-4's LANs, and Hub-B is its ABR.
 - **Virtual link.** Area 20 has no physical path to area 0, so Hub-A and Hub-B run a virtual link across area 10. That's why area 10 has to stay a normal area: a virtual link can't transit a stub or NSSA area.
+- **Area 0 authentication.** Area 0 uses OSPF MD5 authentication with key ID 1 and key `LabArea0Key`. This covers the HQ-Edge to Hub-A link and the virtual link, because a virtual link is part of area 0. No other area uses authentication.
+- **Totally stubby area 20.** Area 20 has a single exit, so it is totally stubby: Hub-B blocks external and inter-area routes from entering it and injects a default route of its own instead. Branch-4 therefore learns only area 20's own routes plus that default from Hub-B.
 - **Passive LANs.** Branch LAN interfaces are in OSPF as passive interfaces. Their subnets are advertised, but no hellos are sent toward the hosts.
 - **Summarization.** Both ABRs attached to area 10 (Hub-A and Hub-B) summarize the area 10 LANs as 10.1.0.0/16. Hub-B summarizes the area 20 LANs as 10.2.0.0/16. The /30 transit links are not summarized.
-- **Internet edge.** HQ-Edge is the ASBR. Its default route is a static route via ISP-A (203.0.113.1). A floating static route via ISP-B (203.0.113.5, distance 10) takes over only if the ISP-A route is withdrawn. HQ-Edge originates a default route into OSPF only while it has one itself, so that if both uplinks are lost the rest of the network stops sending traffic toward a dead end. Traffic leaving either ISP link is source-NATed (masquerade) to HQ-Edge's address on that link.
-- **ISPs.** ISP-A and ISP-B stand in for upstream providers and are deliberately minimal: a link address and a loopback. They run no routing protocol and have no routes to internal networks, because NAT on HQ-Edge makes such routes unnecessary. One consequence is that 1.1.1.1, which sits behind ISP-B, is unreachable from the lab while ISP-A is the active path. That's expected.
+- **Internet edge.** HQ-Edge is the ASBR. It runs eBGP as AS 65000 with ISP-A (AS 65100, neighbor 203.0.113.1) and ISP-B (AS 65200, neighbor 203.0.113.5). Each ISP sends a default route plus its own loopback (8.8.8.8/32 from ISP-A, 1.1.1.1/32 from ISP-B). HQ-Edge sets local preference 200 on everything learned from ISP-A, so ISP-A's default route is preferred and ISP-B's default is the backup; 1.1.1.1 is always reached through ISP-B because only ISP-B advertises it. HQ-Edge advertises nothing to either ISP, so it never becomes a transit path between them. HQ-Edge has no static routes. It originates a default route into OSPF only while it has one itself, so that if both uplinks are lost the rest of the network stops sending traffic toward a dead end. Traffic leaving either ISP link is source-NATed (masquerade) to HQ-Edge's address on that link.
+- **ISPs.** ISP-A and ISP-B stand in for upstream providers. Each has a link address, a loopback and a BGP session with HQ-Edge, and they have no routes to internal networks because NAT on HQ-Edge makes such routes unnecessary. They belong to the providers: their configuration is correct, and you may inspect them but must not change them.
+- **Guest LAN.** 10.2.2.0/24 on Branch-4 (B4-PC3, B4-PC4) is a guest network. Guest hosts can reach the internet and each other, but no other internal network, and no internal host can open a connection into the guest LAN. Branch-4 enforces this with stateful filtering in its forward chain. No other device filters traffic.
 - **Nothing extra.** If the design doesn't call for something, it shouldn't be configured. Settings the design doesn't mention should be left at platform defaults.
 
 ## Definition of done
 
 The network is fixed when all of the following hold, confirmed in a final pass using data collected after your last change:
 
-1. **Adjacencies.** Seven OSPF adjacencies are up and Full:
+1. **Adjacencies and sessions.** Both eBGP sessions on HQ-Edge are Established, and seven OSPF adjacencies are up and Full:
    - HQ-Edge to Hub-A (area 0)
    - Hub-A to Branch-1, Hub-A to Branch-2, Hub-A to Branch-3, and Branch-3 to Hub-B (area 10)
    - Hub-B to Branch-4 (area 20)
    - the Hub-A to Hub-B virtual link
 2. **Routing tables.**
-   - Every OSPF router except HQ-Edge has a default route learned through OSPF from HQ-Edge.
-   - On HQ-Edge, the active default route is the static route via 203.0.113.1, and the distance-10 route via 203.0.113.5 is present as a backup.
-   - Every OSPF router has a route covering every lab subnet. Routers outside area 10 see the area 10 LANs only as 10.1.0.0/16, and routers outside area 20 see the area 20 LANs only as 10.2.0.0/16.
+   - Every OSPF router except HQ-Edge and Branch-4 has a default route learned through OSPF from HQ-Edge. Branch-4's default route is the one Hub-B injects into area 20.
+   - On HQ-Edge, the best default route is the BGP route from ISP-A via 203.0.113.1, and ISP-B's default via 203.0.113.5 is present in BGP as the backup. 8.8.8.8/32 is learned from ISP-A and 1.1.1.1/32 from ISP-B. HQ-Edge advertises no routes to either ISP.
+   - Every OSPF router has a route covering every lab subnet; for Branch-4, that route is the default for everything outside area 20. Routers outside area 10 see the area 10 LANs only as 10.1.0.0/16, and routers outside area 20 see the area 20 LANs only as 10.2.0.0/16.
 3. **Host reachability,** tested from the hosts themselves using lab addresses:
-   - Every PC can ping every other PC (10 hosts, 90 pairs).
-   - Every PC can ping 8.8.8.8.
-4. **Backup path ready.** HQ-Edge can ping both ISP next hops, 203.0.113.1 and 203.0.113.5. Don't take the primary path down to test failover. Checking the backup route and the ISP-B link is enough, and it doesn't risk leaving the network broken.
+   - Every non-guest PC can ping every other non-guest PC (8 hosts, 56 pairs), and the two guest PCs can ping each other.
+   - Pings between a guest PC and a non-guest PC fail in both directions (32 pairs). These failures are the guest policy working, not a fault.
+   - Every PC can ping 8.8.8.8 and 1.1.1.1.
+4. **Backup path ready.** ISP-B's default route is present as the BGP backup, and the pings to 1.1.1.1 show that the ISP-B link and its NAT work. Don't take the primary path down to test failover. These checks are enough, and they don't risk leaving the network broken.
 5. **Clean, persistent config.** Every fix is saved so it survives a reboot. Nothing you added for diagnosis is left behind, and no configuration exists that the design doesn't call for.
 
 ## How to work
 
-**Get the whole picture before changing anything.** Collect state from every device first. On routers, that means interfaces and addresses, OSPF configuration and neighbors, and routing tables. On HQ-Edge, also collect static routes and NAT. On hosts, collect addressing and routes. Read-only collection runs well in parallel, and one pass across all devices is faster and more coherent than probing them one at a time. Compare what you find against the design. Every deviation is a candidate fault, but before you act on one, make sure you can explain how it causes a failure, or would cause one.
+**Get the whole picture before changing anything.** Collect state from every device first. On routers, that means interfaces and addresses, OSPF configuration and neighbors, routing tables and firewall rules. On HQ-Edge, also collect BGP sessions, received and advertised routes, route-maps and NAT. On hosts, collect addressing and routes. Read-only collection runs well in parallel, and one pass across all devices is faster and more coherent than probing them one at a time. Compare what you find against the design. Every deviation is a candidate fault, but before you act on one, make sure you can explain how it causes a failure, or would cause one.
 
-**Fix causes, not symptoms.** Each fix should bring the configuration back in line with the design. A workaround can make pings succeed while leaving the network wrong and fragile, and here it counts as a failure. Examples include a static route that covers for a missing OSPF route, a knob that forces behavior unconditionally, an extra network statement, or a route added on an ISP. If the design-compliant fix doesn't seem to work, find out why instead of reaching for an override.
+**Fix causes, not symptoms.** Each fix should bring the configuration back in line with the design. A workaround can make pings succeed while leaving the network wrong and fragile, and here it counts as a failure. Examples include a static route that covers for a missing OSPF route, a knob that forces behavior unconditionally, an extra network statement, a firewall rule removed or loosened to make pings pass, or any change on an ISP. If the design-compliant fix doesn't seem to work, find out why instead of reaching for an override.
 
 **Change one device at a time and check the effect.** Faults can mask each other, and a change can have side effects you didn't intend. Change one device, then confirm you got the effect you predicted. If a change didn't help, revert it before trying something else, so that you're never debugging a stack of speculative edits. OSPF needs time to converge. Adjacencies can take tens of seconds to form, and the virtual link comes up only after area 10 has converged, so wait before deciding a change didn't work.
 

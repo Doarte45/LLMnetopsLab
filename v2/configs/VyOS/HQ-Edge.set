@@ -6,10 +6,23 @@ set interfaces ethernet eth2 address 203.0.113.6/30
 
 set protocols ospf parameters router-id 10.255.0.1
 set protocols ospf area 0 network 172.16.1.0/30
+set protocols ospf area 0 authentication md5
+set protocols ospf interface eth0 authentication md5 key-id 1 md5-key 'LabArea0Key'
 set protocols ospf default-information originate
 
-set protocols static route 0.0.0.0/0 next-hop 203.0.113.1 distance 1
-set protocols static route 0.0.0.0/0 next-hop 203.0.113.5 distance 10
+set policy route-map ISP-A-IN rule 10 action permit
+set policy route-map ISP-A-IN rule 10 set local-preference 200
+set policy route-map ISP-B-IN rule 10 action permit
+set policy route-map DENY-ALL rule 10 action deny
+
+set protocols bgp system-as 65000
+set protocols bgp parameters router-id 10.255.0.1
+set protocols bgp neighbor 203.0.113.1 remote-as 65100
+set protocols bgp neighbor 203.0.113.1 address-family ipv4-unicast route-map import ISP-A-IN
+set protocols bgp neighbor 203.0.113.1 address-family ipv4-unicast route-map export DENY-ALL
+set protocols bgp neighbor 203.0.113.5 remote-as 65200
+set protocols bgp neighbor 203.0.113.5 address-family ipv4-unicast route-map import ISP-B-IN
+set protocols bgp neighbor 203.0.113.5 address-family ipv4-unicast route-map export DENY-ALL
 
 set nat source rule 100 outbound-interface name eth1
 set nat source rule 100 translation address masquerade

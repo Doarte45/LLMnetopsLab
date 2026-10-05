@@ -9,7 +9,7 @@ The project has two lab versions of increasing complexity:
 | Origin | VyOS translation of Cisco Packet Tracer Activity 11.6.3 (CCNA OSPF troubleshooting) | Original design |
 | Devices | 3 routers, 3 hosts | 9 routers, 10 hosts (19 devices) |
 | Platforms | VyOS, VPCS | VyOS, MikroTik RouterOS 7, Alpine Linux |
-| Routing | Single-area OSPF, default route from HQ | Multi-area OSPF (areas 0/10/20), ABRs, virtual link, inter-area summarization, ASBR with dual ISPs, NAT, floating static backup |
+| Routing | Single-area OSPF, default route from HQ | Multi-area OSPF (areas 0/10/20), ABRs, virtual link, MD5 auth on area 0, totally stubby area, inter-area summarization, ASBR with eBGP to dual ISPs, NAT, guest LAN firewall |
 | Faults | 6 known faults (3 on HQ, 3 on Branch2) | Multiple faults, not disclosed to the agent ("may be anywhere in the lab") |
 | Status | Complete — 50 runs captured and analyzed | Topology, base configs and prompt done; fault injection, verification and analysis in progress |
 
@@ -137,7 +137,7 @@ v2 scales the experiment up to a realistic small-enterprise WAN to test whether 
 ```
      ISP-A  lo 8.8.8.8                       ISP-B  lo 1.1.1.1
           \  203.0.113.0/30                 /  203.0.113.4/30
-            +---------- HQ-Edge ----------+           ASBR, NAT to both ISPs
+            +---------- HQ-Edge ----------+           ASBR, eBGP + NAT to both ISPs
                            |  172.16.1.0/30                            area 0
                          Hub-A                        ABR 0/10
            +---------------+----------------+
@@ -158,10 +158,12 @@ v2 scales the experiment up to a realistic small-enterprise WAN to test whether 
 
 - **Area 0:** HQ-Edge ↔ Hub-A. HQ-Edge is the ASBR and originates the default route.
 - **Area 10:** Hub-A ↔ Branch-1/2/3, plus Branch-3 ↔ Hub-B. Hub-A is an ABR.
-- **Area 20:** Hub-B ↔ Branch-4. Hub-B is an ABR.
+- **Area 20:** Hub-B ↔ Branch-4. Hub-B is an ABR. Area 20 is totally stubby: Branch-4 learns only area 20 routes plus a default injected by Hub-B.
+- **Authentication:** area 0 uses MD5, including the virtual link (which is logically an area 0 interface).
 - **Virtual link:** Area 20 has no physical path to area 0, so Hub-A and Hub-B form a virtual link across transit area 10.
 - **Summarization:** ABRs summarize area 10 LANs as 10.1.0.0/16 and area 20 LANs as 10.2.0.0/16.
-- **Internet:** default via ISP-A with ISP-B as a floating backup (distance 10); traffic is masqueraded out both uplinks. ISP loopbacks (8.8.8.8, 1.1.1.1) serve as test targets.
+- **Internet:** eBGP from HQ-Edge (AS 65000) to ISP-A (AS 65100) and ISP-B (AS 65200). Both ISPs send a default route plus their loopback; local preference makes ISP-A primary, and HQ-Edge advertises nothing back. Traffic is masqueraded out both uplinks. ISP loopbacks (8.8.8.8, 1.1.1.1) serve as test targets; 1.1.1.1 is always reached via ISP-B.
+- **Guest LAN:** 10.2.2.0/24 on Branch-4 is internet-only, enforced by a stateful forward-chain filter on Branch-4.
 - **Management:** every device has an out-of-band interface on 192.168.122.0/24 (configs in each platform's `CCAccess/` folder) that is never part of OSPF.
 
 ### Current Status

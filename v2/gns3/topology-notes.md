@@ -50,14 +50,16 @@ LAN gateways are `.1`; hosts use `.10` and up.
 
 - **Area 0:** HQ-Edge eth0 and Hub-A eth0 (172.16.1.0/30). HQ-Edge is the ASBR and originates the default route.
 - **Area 10:** Hub-A eth1-3, Branch-1/2/3, and the Branch-3 to Hub-B link (172.16.20.0/30). Hub-A is an ABR.
-- **Area 20:** Hub-B eth1 and Branch-4. Hub-B is an ABR.
+- **Area 20:** Hub-B eth1 and Branch-4. Hub-B is an ABR. Area 20 is totally stubby (`area-type stub no-summary` on Hub-B, `type=stub` on Branch-4), so Branch-4 gets only intra-area routes plus a default from Hub-B.
+- **Authentication:** Area 0 uses MD5 (key ID 1) on the HQ-Edge to Hub-A link and on the virtual link. Hub-B needs `area 0 authentication md5` even though it has no area 0 networks: on VyOS the virtual-link `authentication md5` option only sets the key, and the auth type comes from the area 0 setting.
 - **Virtual link:** Area 20 has no physical link to area 0, so Hub-A (10.255.0.2) and Hub-B (10.255.0.3) form a virtual link across transit area 10. Area 10 must stay a normal area (not stub/NSSA).
 - **Summarization:** ABRs summarize area 10 LANs as 10.1.0.0/16 and area 20 LANs as 10.2.0.0/16.
-- **Internet:** HQ-Edge's default route uses ISP-A, with ISP-B as a floating backup (distance 10). Traffic is masqueraded out both ISP links. The ISP loopbacks (8.8.8.8, 1.1.1.1) are test targets.
+- **Internet:** HQ-Edge (AS 65000) runs eBGP with ISP-A (AS 65100) and ISP-B (AS 65200). Each ISP sends a default route plus its loopback (8.8.8.8/32, 1.1.1.1/32). Local preference 200 on ISP-A routes makes ISP-A primary; HQ-Edge advertises nothing back (DENY-ALL export). Traffic is masqueraded out both ISP links. The ISP loopbacks are test targets, and 1.1.1.1 always goes via ISP-B, which exercises the backup path.
+- **Guest LAN:** 10.2.2.0/24 on Branch-4 is internet-only. Branch-4's forward-chain filter drops guest traffic to 10.0.0.0/8 and new connections from 10.0.0.0/8 into the guest LAN.
 
 ## Enabling Claude Code Access (CCAccess)
 
-Every router and PC has an extra interface connected to a GNS3 Cloud for out-of-band management over 192.168.122.0/24. The `CCAccess/` folder under each platform's configs sets the hostname (routers only), the management address, and enables SSH. The management interface has no gateway and is not in OSPF, so it never carries lab traffic.
+Every router and PC has an extra interface connected to a GNS3 Cloud for out-of-band management over 192.168.122.0/24. The `CCAccess/` folder under each platform's configs sets the management address and enables SSH. Hostnames come from the normal configs. The management interface has no gateway and is not in OSPF, so it never carries lab traffic.
 
 | Device | Interface | Address |
 |--------|-----------|---------|
@@ -74,7 +76,7 @@ Every router and PC has an extra interface connected to a GNS3 Cloud for out-of-
 
 To apply:
 - **VyOS:** `configure`, paste `configs/VyOS/CCAccess/<router>-access.set`, then `commit` and `save`.
-- **MikroTik:** paste `configs/Mikrotik/CCAccess/<router>-access.rsc` into the terminal.
+- **MikroTik:** paste `configs/Mikrotik/CCAccess/<router>-access.rsc` into the terminal. It also removes the DHCP client that the CHR default config puts on ether1, which would otherwise install a distance-1 default route if anything answered it.
 - **Alpine:** paste `configs/Alpine/<pc>.sh` first, then `configs/Alpine/CCAccess/<pc>-access.sh`. The base script rewrites `/etc/network/interfaces`, so re-running it removes eth3 until the access script is run again. SSH logs in as root, so set a root password with `passwd` first. If `openssh` isn't installed, the script runs `apk add openssh`, which needs internet access.
 
 Credentials: VyOS `vyos` / `vyos`, MikroTik `admin` (password set at first login), Alpine `root` (password set with `passwd`).

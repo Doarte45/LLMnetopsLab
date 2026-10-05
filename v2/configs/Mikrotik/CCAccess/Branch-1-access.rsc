@@ -1,3 +1,3 @@
-/system identity set name=Branch-1
+/ip dhcp-client remove [find]
 /ip address add address=192.168.122.21/24 interface=ether4
 /ip service set ssh disabled=no port=22

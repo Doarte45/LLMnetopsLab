@@ -2,3 +2,13 @@ set system host-name ISP-A
 
 set interfaces ethernet eth0 address 203.0.113.1/30
 set interfaces loopback lo address 8.8.8.8/32
+
+set policy route-map PERMIT-ALL rule 10 action permit
+
+set protocols bgp system-as 65100
+set protocols bgp parameters router-id 8.8.8.8
+set protocols bgp address-family ipv4-unicast network 8.8.8.8/32
+set protocols bgp neighbor 203.0.113.2 remote-as 65000
+set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast default-originate
+set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast route-map import PERMIT-ALL
+set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast route-map export PERMIT-ALL

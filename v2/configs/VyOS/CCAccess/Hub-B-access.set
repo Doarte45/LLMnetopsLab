@@ -1,3 +1,2 @@
-set system host-name Hub-B
 set interfaces ethernet eth3 address 192.168.122.13/24
 set service ssh port 22

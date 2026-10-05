@@ -7,8 +7,10 @@ set interfaces ethernet eth3 address 172.16.10.9/30
 
 set protocols ospf parameters router-id 10.255.0.2
 set protocols ospf area 0 network 172.16.1.0/30
+set protocols ospf area 0 authentication md5
+set protocols ospf interface eth0 authentication md5 key-id 1 md5-key 'LabArea0Key'
 set protocols ospf area 10 network 172.16.10.0/30
 set protocols ospf area 10 network 172.16.10.4/30
 set protocols ospf area 10 network 172.16.10.8/30
 set protocols ospf area 10 range 10.1.0.0/16
-set protocols ospf area 10 virtual-link 10.255.0.3
+set protocols ospf area 10 virtual-link 10.255.0.3 authentication md5 key-id 1 md5-key 'LabArea0Key'
