@@ -1,0 +1,2761 @@
+{
+  "timestamp": "2026-10-11T02:03:29.406958+00:00",
+  "layers": [
+    1,
+    2,
+    3
+  ],
+  "checks": [
+    {
+      "id": "L1.ping.B1-PC1->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC1->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B1-PC2->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC1->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B2-PC2->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC1->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B3-PC2->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B4-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC1->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B1-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B1-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B2-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B2-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B3-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B3-PC2",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B4-PC1",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B4-PC3",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->B4-PC4",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC2->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B1-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B1-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B2-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B2-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B3-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B3-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B4-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B4-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->B4-PC4",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC3->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B1-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B1-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B2-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B2-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B3-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B3-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B4-PC1",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B4-PC2",
+      "layer": 1,
+      "category": "ping_denied",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "blocked",
+      "observed": "blocked",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->B4-PC3",
+      "layer": 1,
+      "category": "ping_allowed",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->8.8.8.8",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L1.ping.B4-PC4->1.1.1.1",
+      "layer": 1,
+      "category": "ping_internet",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "reachable",
+      "observed": "reachable",
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.HQ-Edge--Hub-A",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "HQ-Edge": "Full",
+        "Hub-A": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Hub-A--Branch-1",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Hub-A": "Full",
+        "Branch-1": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Hub-A--Branch-2",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Hub-A": "Full",
+        "Branch-2": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Hub-A--Branch-3",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Hub-A": "Full",
+        "Branch-3": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Branch-3--Hub-B",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Branch-3": "Full",
+        "Hub-B": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Hub-B--Branch-4",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Hub-B": "Full",
+        "Branch-4": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+      "layer": 2,
+      "category": "ospf_adjacency",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "Full on both ends",
+      "observed": {
+        "Hub-A": "Full",
+        "Hub-B": "Full"
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.HQ-Edge.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Hub-A.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Hub-B.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Branch-1.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Branch-2.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Branch-3.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_neighbors.Branch-4.no_unexpected",
+      "layer": 2,
+      "category": "ospf_neighbors",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": [],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.HQ-Edge",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Hub-A",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Hub-B",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Branch-1",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Branch-2",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Branch-3",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_stable.Branch-4",
+      "layer": 2,
+      "category": "ospf_stable",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": "stable across snapshots",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.HQ-Edge",
+      "layer": 2,
+      "category": "default_route",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "bgp via 203.0.113.1",
+      "observed": [
+        "bgp via 203.0.113.1"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Hub-A",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "ospf via 172.16.1.1",
+      "observed": [
+        "ospf via 172.16.1.1"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Hub-B",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "ospf via any",
+      "observed": [
+        "ospf via 172.16.20.2,172.16.20.2"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Branch-1",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": "ospf via 172.16.10.1",
+      "observed": [
+        "ospf via 172.16.10.1"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Branch-2",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": "ospf via 172.16.10.5",
+      "observed": [
+        "ospf via 172.16.10.5"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Branch-3",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "ospf via 172.16.10.9",
+      "observed": [
+        "ospf via 172.16.10.9"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.default_route.Branch-4",
+      "layer": 2,
+      "category": "default_route",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": "ospf via 172.16.20.5",
+      "observed": [
+        "ospf via 172.16.20.5"
+      ],
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_route_type.HQ-Edge.10.1.0.0/16",
+      "layer": 2,
+      "category": "ospf_route_type",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "N IA",
+      "observed": "N IA",
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+      "layer": 2,
+      "category": "ospf_route_type",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "N IA",
+      "observed": "N IA",
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_route_type.Hub-A.0.0.0.0/0",
+      "layer": 2,
+      "category": "ospf_route_type",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "N E2",
+      "observed": "N E2",
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+      "layer": 2,
+      "category": "ospf_route_type",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "N IA",
+      "observed": "N IA",
+      "detail": ""
+    },
+    {
+      "id": "L2.ospf_route_type.Hub-B.0.0.0.0/0",
+      "layer": 2,
+      "category": "ospf_route_type",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "N E2",
+      "observed": "N E2",
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.HQ-Edge",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Hub-A",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Hub-B",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Branch-1",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Branch-2",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Branch-3",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.route_coverage.Branch-4",
+      "layer": 2,
+      "category": "route_coverage",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": "every lab subnet covered",
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.summaries.HQ-Edge",
+      "layer": 2,
+      "category": "summaries",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": {
+        "present": [
+          "10.1.0.0/16",
+          "10.2.0.0/16"
+        ],
+        "absent": [
+          "10.1.1.0/24",
+          "10.1.2.0/24",
+          "10.1.3.0/24",
+          "10.2.1.0/24",
+          "10.2.2.0/24"
+        ]
+      },
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.summaries.Hub-A",
+      "layer": 2,
+      "category": "summaries",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": {
+        "present": [
+          "10.2.0.0/16"
+        ],
+        "absent": []
+      },
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.summaries.Branch-1",
+      "layer": 2,
+      "category": "summaries",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": {
+        "present": [
+          "10.2.0.0/16"
+        ],
+        "absent": []
+      },
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.summaries.Branch-2",
+      "layer": 2,
+      "category": "summaries",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": {
+        "present": [
+          "10.2.0.0/16"
+        ],
+        "absent": []
+      },
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.summaries.Branch-3",
+      "layer": 2,
+      "category": "summaries",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": {
+        "present": [
+          "10.2.0.0/16"
+        ],
+        "absent": []
+      },
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.stub_area.Branch-4",
+      "layer": 2,
+      "category": "stub_area",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": [
+        "0.0.0.0/0",
+        "10.1.0.0/16"
+      ],
+      "observed": [],
+      "detail": "OSPF routes outside the allowed set"
+    },
+    {
+      "id": "L2.bgp_session.ISP-A",
+      "layer": 2,
+      "category": "bgp_session",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "Established, AS 65100",
+      "observed": "Established, AS 65100",
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_received.ISP-A",
+      "layer": 2,
+      "category": "bgp_received",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": [
+        "0.0.0.0/0",
+        "8.8.8.8/32"
+      ],
+      "observed": {
+        "prefixes": [
+          "0.0.0.0/0",
+          "8.8.8.8/32"
+        ],
+        "pfx_rcd": 2
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_advertised.ISP-A",
+      "layer": 2,
+      "category": "bgp_advertised",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": 0,
+      "observed": 0,
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_session.ISP-B",
+      "layer": 2,
+      "category": "bgp_session",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "Established, AS 65200",
+      "observed": "Established, AS 65200",
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_received.ISP-B",
+      "layer": 2,
+      "category": "bgp_received",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": [
+        "0.0.0.0/0",
+        "1.1.1.1/32"
+      ],
+      "observed": {
+        "prefixes": [
+          "0.0.0.0/0",
+          "1.1.1.1/32"
+        ],
+        "pfx_rcd": 2
+      },
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_advertised.ISP-B",
+      "layer": 2,
+      "category": "bgp_advertised",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": 0,
+      "observed": 0,
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_best.0.0.0.0/0",
+      "layer": 2,
+      "category": "bgp_best",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "via 203.0.113.1, local-pref 200",
+      "observed": "via 203.0.113.1, local-pref 200",
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_best.8.8.8.8/32",
+      "layer": 2,
+      "category": "bgp_best",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "via 203.0.113.1, local-pref 200",
+      "observed": "via 203.0.113.1, local-pref 200",
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_best.1.1.1.1/32",
+      "layer": 2,
+      "category": "bgp_best",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "via 203.0.113.5",
+      "observed": "via 203.0.113.5, local-pref None",
+      "detail": ""
+    },
+    {
+      "id": "L2.bgp_backup_default",
+      "layer": 2,
+      "category": "bgp_backup_default",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "valid backup via 203.0.113.5",
+      "observed": "present, not best",
+      "detail": ""
+    },
+    {
+      "id": "L2.isp_no_transit.ISP-A",
+      "layer": 2,
+      "category": "isp_no_transit",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": [
+        "8.8.8.8/32"
+      ],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L2.isp_no_transit.ISP-B",
+      "layer": 2,
+      "category": "isp_no_transit",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": [
+        "1.1.1.1/32"
+      ],
+      "observed": [],
+      "detail": ""
+    },
+    {
+      "id": "L3.config.HQ-Edge",
+      "layer": 3,
+      "category": "config",
+      "device": "HQ-Edge",
+      "status": "fail",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 1,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.HQ-Edge",
+      "layer": 3,
+      "category": "persisted",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.HQ-Edge",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Hub-A",
+      "layer": 3,
+      "category": "config",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Hub-A",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.Hub-A",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Hub-B",
+      "layer": 3,
+      "category": "config",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Hub-B",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.Hub-B",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.ISP-A",
+      "layer": 3,
+      "category": "config",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.ISP-A",
+      "layer": 3,
+      "category": "persisted",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.ISP-A",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.ISP-B",
+      "layer": 3,
+      "category": "config",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.ISP-B",
+      "layer": 3,
+      "category": "persisted",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.ISP-B",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Branch-1",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-2",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-3",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-3",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-4",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-4",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.B1-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B1-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B1-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B1-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B2-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B2-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B2-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B2-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B3-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B3-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B3-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B3-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC3",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC3",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC4",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC4",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    }
+  ],
+  "layer1": {
+    "matrix": {
+      "B1-PC1": {
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B1-PC2": {
+        "B1-PC1": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B2-PC1": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B2-PC2": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B3-PC1": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B3-PC2": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B4-PC1": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B4-PC2": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC3": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B4-PC3": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC4": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      },
+      "B4-PC4": {
+        "B1-PC1": "pass",
+        "B1-PC2": "pass",
+        "B2-PC1": "pass",
+        "B2-PC2": "pass",
+        "B3-PC1": "pass",
+        "B3-PC2": "pass",
+        "B4-PC1": "pass",
+        "B4-PC2": "pass",
+        "B4-PC3": "pass",
+        "8.8.8.8": "pass",
+        "1.1.1.1": "pass"
+      }
+    }
+  },
+  "layer2": {
+    "converged": {
+      "HQ-Edge": true,
+      "Hub-A": true,
+      "Hub-B": true,
+      "Branch-1": true,
+      "Branch-2": true,
+      "Branch-3": true,
+      "Branch-4": true,
+      "ISP-A": true,
+      "ISP-B": true
+    }
+  },
+  "layer3": {
+    "HQ-Edge": {
+      "diffs": [
+        {
+          "path": "route_maps.ISP-B-IN.rule 10.set",
+          "kind": "extra",
+          "intent": null,
+          "live": true
+        }
+      ],
+      "unsaved": [],
+      "frr": []
+    },
+    "Hub-A": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "Hub-B": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "ISP-A": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "ISP-B": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "Branch-1": {
+      "diffs": []
+    },
+    "Branch-2": {
+      "diffs": []
+    },
+    "Branch-3": {
+      "diffs": []
+    },
+    "Branch-4": {
+      "diffs": []
+    },
+    "B1-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B1-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B2-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B2-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B3-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B3-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC3": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC4": {
+      "diffs": [],
+      "unsaved": []
+    }
+  },
+  "connections": {},
+  "summary": {
+    "L1": {
+      "total": 110,
+      "pass": 110,
+      "fail": 0,
+      "flaky": 0,
+      "error": 0,
+      "categories": {
+        "ping_allowed": {
+          "pass": 58
+        },
+        "ping_denied": {
+          "pass": 32
+        },
+        "ping_internet": {
+          "pass": 20
+        }
+      }
+    },
+    "L2": {
+      "total": 58,
+      "pass": 58,
+      "fail": 0,
+      "flaky": 0,
+      "error": 0,
+      "categories": {
+        "ospf_adjacency": {
+          "pass": 7
+        },
+        "ospf_neighbors": {
+          "pass": 7
+        },
+        "ospf_stable": {
+          "pass": 7
+        },
+        "default_route": {
+          "pass": 7
+        },
+        "ospf_route_type": {
+          "pass": 5
+        },
+        "route_coverage": {
+          "pass": 7
+        },
+        "summaries": {
+          "pass": 5
+        },
+        "stub_area": {
+          "pass": 1
+        },
+        "bgp_session": {
+          "pass": 2
+        },
+        "bgp_received": {
+          "pass": 2
+        },
+        "bgp_advertised": {
+          "pass": 2
+        },
+        "bgp_best": {
+          "pass": 3
+        },
+        "bgp_backup_default": {
+          "pass": 1
+        },
+        "isp_no_transit": {
+          "pass": 2
+        }
+      }
+    },
+    "L3": {
+      "total": 43,
+      "pass": 42,
+      "fail": 1,
+      "flaky": 0,
+      "error": 0,
+      "categories": {
+        "config": {
+          "fail": 1,
+          "pass": 18
+        },
+        "persisted": {
+          "pass": 19
+        },
+        "frr_sync": {
+          "pass": 5
+        }
+      }
+    }
+  },
+  "comparison": {
+    "baseline_timestamp": "2026-10-11T01:29:18.273035+00:00",
+    "collateral": [],
+    "resolved": [
+      "L1.ping.B1-PC1->1.1.1.1",
+      "L1.ping.B1-PC1->8.8.8.8",
+      "L1.ping.B1-PC1->B2-PC1",
+      "L1.ping.B1-PC1->B2-PC2",
+      "L1.ping.B1-PC1->B4-PC1",
+      "L1.ping.B1-PC1->B4-PC2",
+      "L1.ping.B1-PC2->1.1.1.1",
+      "L1.ping.B1-PC2->8.8.8.8",
+      "L1.ping.B1-PC2->B2-PC1",
+      "L1.ping.B1-PC2->B2-PC2",
+      "L1.ping.B1-PC2->B3-PC1",
+      "L1.ping.B1-PC2->B3-PC2",
+      "L1.ping.B1-PC2->B4-PC1",
+      "L1.ping.B1-PC2->B4-PC2",
+      "L1.ping.B2-PC1->1.1.1.1",
+      "L1.ping.B2-PC1->8.8.8.8",
+      "L1.ping.B2-PC1->B1-PC1",
+      "L1.ping.B2-PC1->B1-PC2",
+      "L1.ping.B2-PC1->B3-PC1",
+      "L1.ping.B2-PC1->B3-PC2",
+      "L1.ping.B2-PC1->B4-PC1",
+      "L1.ping.B2-PC1->B4-PC2",
+      "L1.ping.B2-PC2->1.1.1.1",
+      "L1.ping.B2-PC2->8.8.8.8",
+      "L1.ping.B2-PC2->B1-PC1",
+      "L1.ping.B2-PC2->B1-PC2",
+      "L1.ping.B2-PC2->B3-PC1",
+      "L1.ping.B2-PC2->B3-PC2",
+      "L1.ping.B2-PC2->B4-PC1",
+      "L1.ping.B2-PC2->B4-PC2",
+      "L1.ping.B3-PC1->1.1.1.1",
+      "L1.ping.B3-PC1->8.8.8.8",
+      "L1.ping.B3-PC1->B1-PC2",
+      "L1.ping.B3-PC1->B2-PC1",
+      "L1.ping.B3-PC1->B2-PC2",
+      "L1.ping.B3-PC1->B4-PC1",
+      "L1.ping.B3-PC1->B4-PC2",
+      "L1.ping.B3-PC2->1.1.1.1",
+      "L1.ping.B3-PC2->8.8.8.8",
+      "L1.ping.B3-PC2->B1-PC2",
+      "L1.ping.B3-PC2->B2-PC1",
+      "L1.ping.B3-PC2->B2-PC2",
+      "L1.ping.B3-PC2->B4-PC1",
+      "L1.ping.B3-PC2->B4-PC2",
+      "L1.ping.B4-PC1->1.1.1.1",
+      "L1.ping.B4-PC1->8.8.8.8",
+      "L1.ping.B4-PC1->B1-PC1",
+      "L1.ping.B4-PC1->B1-PC2",
+      "L1.ping.B4-PC1->B2-PC1",
+      "L1.ping.B4-PC1->B2-PC2",
+      "L1.ping.B4-PC1->B3-PC1",
+      "L1.ping.B4-PC1->B3-PC2",
+      "L1.ping.B4-PC1->B4-PC3",
+      "L1.ping.B4-PC1->B4-PC4",
+      "L1.ping.B4-PC2->1.1.1.1",
+      "L1.ping.B4-PC2->8.8.8.8",
+      "L1.ping.B4-PC2->B1-PC1",
+      "L1.ping.B4-PC2->B1-PC2",
+      "L1.ping.B4-PC2->B2-PC1",
+      "L1.ping.B4-PC2->B2-PC2",
+      "L1.ping.B4-PC2->B3-PC1",
+      "L1.ping.B4-PC2->B3-PC2",
+      "L1.ping.B4-PC2->B4-PC3",
+      "L1.ping.B4-PC2->B4-PC4",
+      "L1.ping.B4-PC3->1.1.1.1",
+      "L1.ping.B4-PC3->8.8.8.8",
+      "L1.ping.B4-PC3->B4-PC1",
+      "L1.ping.B4-PC3->B4-PC2",
+      "L1.ping.B4-PC4->1.1.1.1",
+      "L1.ping.B4-PC4->8.8.8.8",
+      "L1.ping.B4-PC4->B4-PC1",
+      "L1.ping.B4-PC4->B4-PC2",
+      "L2.bgp_backup_default",
+      "L2.bgp_best.0.0.0.0/0",
+      "L2.bgp_best.8.8.8.8/32",
+      "L2.default_route.Branch-1",
+      "L2.default_route.Branch-2",
+      "L2.default_route.Branch-3",
+      "L2.default_route.Branch-4",
+      "L2.default_route.HQ-Edge",
+      "L2.default_route.Hub-A",
+      "L2.default_route.Hub-B",
+      "L2.ospf_adjacency.HQ-Edge--Hub-A",
+      "L2.ospf_adjacency.Hub-A--Branch-2",
+      "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+      "L2.ospf_adjacency.Hub-B--Branch-4",
+      "L2.ospf_route_type.HQ-Edge.10.1.0.0/16",
+      "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+      "L2.ospf_route_type.Hub-A.0.0.0.0/0",
+      "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+      "L2.ospf_route_type.Hub-B.0.0.0.0/0",
+      "L2.route_coverage.Branch-1",
+      "L2.route_coverage.Branch-2",
+      "L2.route_coverage.Branch-3",
+      "L2.route_coverage.Branch-4",
+      "L2.route_coverage.HQ-Edge",
+      "L2.route_coverage.Hub-A",
+      "L2.route_coverage.Hub-B",
+      "L2.summaries.Branch-1",
+      "L2.summaries.Branch-2",
+      "L2.summaries.Branch-3",
+      "L2.summaries.HQ-Edge",
+      "L2.summaries.Hub-A",
+      "L3.config.B1-PC2",
+      "L3.config.Branch-2",
+      "L3.config.Branch-3",
+      "L3.config.Branch-4",
+      "L3.config.Hub-A",
+      "L3.config.Hub-B"
+    ],
+    "config_introduced": [
+      "HQ-Edge extra route_maps.ISP-B-IN.rule 10.set"
+    ],
+    "config_removed": [
+      "B1-PC2 changed interfaces_file.eth0.address",
+      "B1-PC2 extra runtime.addresses.eth0[10.1.1.11/16]",
+      "B1-PC2 extra runtime.routes[10.1.0.0/16 dev eth0]",
+      "B1-PC2 missing runtime.addresses.eth0[10.1.1.11/24]",
+      "B1-PC2 missing runtime.routes[10.1.1.0/24 dev eth0]",
+      "Branch-2 extra interfaces.ether1.mtu",
+      "Branch-2 missing ospf.interfaces.ether2.passive",
+      "Branch-3 extra firewall[0].action",
+      "Branch-3 extra firewall[0].chain",
+      "Branch-3 extra firewall[0].protocol",
+      "Branch-3 extra firewall[0].table",
+      "Branch-4 changed ospf.areas.20.type",
+      "Branch-4 missing firewall[0].connection-state",
+      "HQ-Edge changed nat.source rule 110.outbound-interface name",
+      "HQ-Edge extra ospf.default_originate.always",
+      "HQ-Edge extra route_maps.ISP-B-IN.rule 10.set local-preference",
+      "HQ-Edge missing route_maps.ISP-A-IN.rule 10.set local-preference",
+      "Hub-A changed ospf.interfaces.eth0.auth.key",
+      "Hub-A extra ospf.areas.10.ranges.10.1.0.0/24.configured",
+      "Hub-A missing ospf.areas.10.ranges.10.1.0.0/16.configured",
+      "Hub-B extra ospf.virtual_links.172.16.10.9.auth.key",
+      "Hub-B extra ospf.virtual_links.172.16.10.9.auth.key_id",
+      "Hub-B extra ospf.virtual_links.172.16.10.9.auth.type",
+      "Hub-B extra ospf.virtual_links.172.16.10.9.transit_area",
+      "Hub-B missing ospf.virtual_links.10.255.0.2.auth.key",
+      "Hub-B missing ospf.virtual_links.10.255.0.2.auth.key_id",
+      "Hub-B missing ospf.virtual_links.10.255.0.2.auth.type",
+      "Hub-B missing ospf.virtual_links.10.255.0.2.transit_area"
+    ]
+  },
+  "run": 23
+}

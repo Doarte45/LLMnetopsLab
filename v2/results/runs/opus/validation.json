@@ -1,0 +1,3883 @@
+{
+  "label": "opus",
+  "batch": {
+    "claude_code_version": "2.1.295 (Claude Code)",
+    "effort": "medium",
+    "model_requested": "claude-opus-4-6",
+    "prompt": "Fix the network"
+  },
+  "runs": [
+    {
+      "run": "run_001",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 47,
+        "duration_ms": 1477383
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.4153530000000005,
+      "wall_min": 24.6
+    },
+    {
+      "run": "run_002",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "WARN",
+          "notes": [
+            "2 result events (agent woken again after its report); meta.json keeps only the last: real totals 60 turns, 28.6 min agent time, cost $4.39 (session cumulative)"
+          ]
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 2,
+        "turns": 60,
+        "duration_ms": 1713491
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.394279,
+      "wall_min": 33.8
+    },
+    {
+      "run": "run_003",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": [
+            "rate limit status allowed_warning (near the limit, not refused)"
+          ]
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 66,
+        "duration_ms": 1838772
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.946419499999999,
+      "wall_min": 30.7
+    },
+    {
+      "run": "run_004",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 36,
+        "duration_ms": 796140
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 2.1671109999999993,
+      "wall_min": 13.3
+    },
+    {
+      "run": "run_005",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 43,
+        "duration_ms": 1257455
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.2628299999999997,
+      "wall_min": 21.0
+    },
+    {
+      "run": "run_006",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-10T02:19:13.914Z out = conn.send_command(\\\"vtysh -c 'write memory'\\\", read_timeout=15)"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 44,
+        "duration_ms": 1753043
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.3593649999999995,
+      "wall_min": 29.2
+    },
+    {
+      "run": "run_007",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 61,
+        "duration_ms": 2278767
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.650214499999999,
+      "wall_min": 38.0
+    },
+    {
+      "run": "run_008",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 63,
+        "duration_ms": 2158178
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 5.319432999999998,
+      "wall_min": 36.0
+    },
+    {
+      "run": "run_009",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "WARN",
+          "notes": [
+            "Hub-B FRR has 'ip prefix-list AREA20-SUMMARY seq 10 deny 10.2.0.0/16 ge 17' (not in the correct lab)",
+            "Hub-B FRR has 'ip prefix-list AREA20-SUMMARY seq 20 permit 0.0.0.0/0 le 32' (not in the correct lab)",
+            "Hub-B FRR has 'router ospf | area 10 filter-list prefix AREA20-SUMMARY in' (not in the correct lab)"
+          ]
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-10T04:38:05.395Z out = conn.send_command(\"vtysh -c 'write memory'\", read_timeout=15)"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 46,
+        "duration_ms": 1678555
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 10 action deny] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 10 ge 17] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 10 prefix 10.2.0.0/16] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 20 action permit] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 20 le 32] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 20 prefix 0.0.0.0/0] = True"
+      ],
+      "workarounds_benign": 1,
+      "cost": 4.3124155,
+      "wall_min": 28.0
+    },
+    {
+      "run": "run_010",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 47,
+        "duration_ms": 1970700
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.8652840000000013,
+      "wall_min": 32.9
+    },
+    {
+      "run": "run_011",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 33,
+        "duration_ms": 1154553
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 2.699103000000001,
+      "wall_min": 19.3
+    },
+    {
+      "run": "run_012",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 36,
+        "duration_ms": 789465
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 1.833541,
+      "wall_min": 13.2
+    },
+    {
+      "run": "run_013",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 61,
+        "duration_ms": 2466775
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 5.2743224999999985,
+      "wall_min": 41.2
+    },
+    {
+      "run": "run_014",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 47,
+        "duration_ms": 939655
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 2.5384800000000003,
+      "wall_min": 15.8
+    },
+    {
+      "run": "run_015",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 47,
+        "duration_ms": 1226077
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Branch-4 extra firewall[3].action = accept",
+        "Branch-4 extra firewall[3].chain = forward",
+        "Branch-4 extra firewall[3].table = filter"
+      ],
+      "workarounds_benign": 0,
+      "cost": 3.388337,
+      "wall_min": 20.6
+    },
+    {
+      "run": "run_016",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 45,
+        "duration_ms": 1972881
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 4.6866734999999995,
+      "wall_min": 32.9
+    },
+    {
+      "run": "run_017",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 49,
+        "duration_ms": 1462644
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.8199715,
+      "wall_min": 24.4
+    },
+    {
+      "run": "run_018",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 61,
+        "duration_ms": 1307338
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.4381674999999983,
+      "wall_min": 21.8
+    },
+    {
+      "run": "run_019",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-10T22:17:28.584Z \"vtysh -c 'conf t' -c 'router ospf' -c 'no area 20 range 10.2.0.0/16' -c 'area 20 range 10.2.0.0/16 cost 2' -c 'end' -c 'write'\" 2>&1",
+            "2026-10-10T22:20:04.714Z \"vtysh -c 'conf t' -c 'router ospf' -c 'area 20 filter-list prefix AREA20-SUMMARY out' -c 'end' -c 'write'\" 2>&1"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 74,
+        "duration_ms": 1821207
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 5.596907000000001,
+      "wall_min": 30.4
+    },
+    {
+      "run": "run_020",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "WARN",
+          "notes": [
+            "Hub-B FRR has 'ip prefix-list AREA20-SUMMARY seq 10 deny 10.2.1.0/24' (not in the correct lab)",
+            "Hub-B FRR has 'ip prefix-list AREA20-SUMMARY seq 100 permit 0.0.0.0/0 le 32' (not in the correct lab)",
+            "Hub-B FRR has 'ip prefix-list AREA20-SUMMARY seq 20 deny 10.2.2.0/24' (not in the correct lab)",
+            "Hub-B FRR has 'router ospf | area 10 filter-list prefix AREA20-SUMMARY in' (not in the correct lab)"
+          ]
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-10T23:01:51.707Z output = conn.send_command(\\\"vtysh -c 'conf t' -c 'router ospf' -c 'area 10 filter-list prefix AREA20-SUMMARY in' -c 'end' -c 'write'\\\", read_timeout=15)",
+            "2026-10-10T23:05:50.720Z output = conn.send_command(\\\"vtysh -c 'conf t' -c 'router ospf' -c 'area 10 filter-list prefix AREA20-SUMMARY in' -c 'end' -c 'write'\\\", read_timeout=15)",
+            "2026-10-10T23:05:50.720Z conn.send_command(f\\\"sudo bash -c 'echo \\\\\\\"{line}\\\\\\\" >> /config/scripts/vyos-postconfig-bootup.script'\\\", read_timeout=10)",
+            "2026-10-10T23:06:39.326Z cmd = \\\"\\\"\\\"sudo bash -c 'cat > /config/scripts/vyos-postconfig-bootup.script << \\\"SCRIPT\\\"",
+            "2026-10-10T23:07:01.526Z 'sudo tee /config/scripts/vyos-postconfig-bootup.script > /dev/null << EOF',",
+            "2026-10-10T23:07:01.526Z 'vtysh -c \"conf t\" -c \"router ospf\" -c \"area 10 filter-list prefix AREA20-SUMMARY in\" -c \"end\" -c \"write\"',"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 64,
+        "duration_ms": 2163824
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 10 action deny] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 10 prefix 10.2.1.0/24] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 100 action permit] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 100 le 32] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 100 prefix 0.0.0.0/0] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 20 action deny] = True",
+        "Hub-B extra other[policy prefix-list AREA20-SUMMARY rule 20 prefix 10.2.2.0/24] = True"
+      ],
+      "workarounds_benign": 1,
+      "cost": 5.1931579999999995,
+      "wall_min": 36.1
+    },
+    {
+      "run": "run_021",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 64,
+        "duration_ms": 1664770
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.375845499999999,
+      "wall_min": 27.8
+    },
+    {
+      "run": "run_022",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 52,
+        "duration_ms": 1230332
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.9015925000000005,
+      "wall_min": 20.5
+    },
+    {
+      "run": "run_023",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 54,
+        "duration_ms": 1879013
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 4.3292585,
+      "wall_min": 31.3
+    },
+    {
+      "run": "run_024",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 50,
+        "duration_ms": 1947560
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 4.4043209999999995,
+      "wall_min": 32.5
+    },
+    {
+      "run": "run_025",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 55,
+        "duration_ms": 1403032
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.7823080000000004,
+      "wall_min": 23.4
+    },
+    {
+      "run": "run_026",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 60,
+        "duration_ms": 1363152
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 4.008415000000002,
+      "wall_min": 22.7
+    },
+    {
+      "run": "run_027",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 29,
+        "duration_ms": 882057
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 1.9978064999999998,
+      "wall_min": 14.7
+    },
+    {
+      "run": "run_028",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 37,
+        "duration_ms": 1134385
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.506440000000001,
+      "wall_min": 18.9
+    },
+    {
+      "run": "run_029",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 39,
+        "duration_ms": 917096
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 2.4619005,
+      "wall_min": 15.3
+    },
+    {
+      "run": "run_030",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 33,
+        "duration_ms": 1201615
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 2.5738960000000004,
+      "wall_min": 20.1
+    },
+    {
+      "run": "run_031",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 62,
+        "duration_ms": 1914974
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 5.675208499999998,
+      "wall_min": 32.0
+    },
+    {
+      "run": "run_032",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "WARN",
+          "notes": [
+            "1 context compactions"
+          ]
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 51,
+        "duration_ms": 2686571
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 5.764479500000001,
+      "wall_min": 44.9
+    },
+    {
+      "run": "run_033",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 49,
+        "duration_ms": 1335334
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.3827205,
+      "wall_min": 22.4
+    },
+    {
+      "run": "run_034",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 46,
+        "duration_ms": 1630412
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.6833064999999996,
+      "wall_min": 27.3
+    },
+    {
+      "run": "run_035",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 43,
+        "duration_ms": 1557488
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.6159665000000003,
+      "wall_min": 26.0
+    },
+    {
+      "run": "run_036",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "WARN",
+          "notes": [
+            "2 result events (agent woken again after its report); meta.json keeps only the last: real totals 48 turns, 28.5 min agent time, cost $3.22 (session cumulative)"
+          ]
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 2,
+        "turns": 48,
+        "duration_ms": 1711767
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.222279,
+      "wall_min": 32.8
+    },
+    {
+      "run": "run_037",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 52,
+        "duration_ms": 1497403
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.584926000000001,
+      "wall_min": 25.0
+    },
+    {
+      "run": "run_038",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 26,
+        "duration_ms": 770946
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Branch-4 extra firewall[3].action = accept",
+        "Branch-4 extra firewall[3].chain = forward",
+        "Branch-4 extra firewall[3].table = filter"
+      ],
+      "workarounds_benign": 1,
+      "cost": 1.7567269999999997,
+      "wall_min": 12.9
+    },
+    {
+      "run": "run_039",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-11T19:08:29.904Z out = conn.send_command(\\\"vtysh -c 'write memory'\\\", read_timeout=15)",
+            "2026-10-11T19:17:27.824Z out = conn.send_command(\\\"vtysh -c 'write memory'\\\", read_timeout=15)"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 64,
+        "duration_ms": 2052192
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 5.544775499999999,
+      "wall_min": 34.2
+    },
+    {
+      "run": "run_040",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 31,
+        "duration_ms": 736869
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 2.1217059999999996,
+      "wall_min": 12.3
+    },
+    {
+      "run": "run_041",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-11T20:12:10.994Z login accounts: def run_cmd(host, dtype, user, passwd, cmds):",
+            "2026-10-11T20:12:10.994Z login accounts: conn = ConnectHandler(host=host, device_type=dtype, username=user, password=passwd)"
+          ]
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 48,
+        "duration_ms": 1362119
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 4.292669,
+      "wall_min": 22.7
+    },
+    {
+      "run": "run_042",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 87,
+        "duration_ms": 1917079
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 6.646607,
+      "wall_min": 32.0
+    },
+    {
+      "run": "run_043",
+      "status": "FAIL",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "FAIL",
+          "notes": [
+            "2026-10-11T21:43:18.245Z Bash: grep -i mtu', '/export terse"
+          ]
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-11T21:42:05.639Z out = conn.send_command(\\\"vtysh -c 'conf t' -c 'router ospf' -c 'no area 20 range 10.2.0.0/16 cost 2' -c 'area 20 range 10.2.0.0/16' -c 'end' -c 'write memory'\\\", read_timeout=15)"
+          ]
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 55,
+        "duration_ms": 1343794
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Branch-4 extra other[/ip firewall connection tracking set enabled=yes] = True"
+      ],
+      "workarounds_benign": 1,
+      "cost": 3.5830770000000003,
+      "wall_min": 22.4
+    },
+    {
+      "run": "run_044",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 38,
+        "duration_ms": 1202316
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Branch-4 extra other[/ip firewall connection tracking set enabled=yes] = True"
+      ],
+      "workarounds_benign": 0,
+      "cost": 3.2881724999999995,
+      "wall_min": 20.1
+    },
+    {
+      "run": "run_045",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 41,
+        "duration_ms": 1216876
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 3.504661,
+      "wall_min": 20.3
+    },
+    {
+      "run": "run_046",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 48,
+        "duration_ms": 1179103
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.498109500000001,
+      "wall_min": 19.7
+    },
+    {
+      "run": "run_047",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 46,
+        "duration_ms": 1173780
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.4738900000000004,
+      "wall_min": 19.6
+    },
+    {
+      "run": "run_048",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 41,
+        "duration_ms": 1189063
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 1,
+      "cost": 3.4408274999999997,
+      "wall_min": 19.8
+    },
+    {
+      "run": "run_049",
+      "status": "ok",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "ok",
+          "notes": []
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 45,
+        "duration_ms": 1098500
+      },
+      "fixed": 12,
+      "workarounds_real": [
+        "Branch-4 extra other[/ip firewall connection tracking set enabled=yes] = True"
+      ],
+      "workarounds_benign": 1,
+      "cost": 3.173973,
+      "wall_min": 18.3
+    },
+    {
+      "run": "run_050",
+      "status": "WARN",
+      "checks": {
+        "files": {
+          "status": "ok",
+          "notes": []
+        },
+        "session": {
+          "status": "ok",
+          "notes": []
+        },
+        "model": {
+          "status": "ok",
+          "notes": []
+        },
+        "limits": {
+          "status": "ok",
+          "notes": []
+        },
+        "background": {
+          "status": "ok",
+          "notes": []
+        },
+        "baseline": {
+          "status": "ok",
+          "notes": []
+        },
+        "timeline": {
+          "status": "ok",
+          "notes": []
+        },
+        "connections": {
+          "status": "ok",
+          "notes": []
+        },
+        "drift": {
+          "status": "ok",
+          "notes": []
+        },
+        "regrade": {
+          "status": "ok",
+          "notes": []
+        },
+        "isolation": {
+          "status": "ok",
+          "notes": []
+        },
+        "mgmt": {
+          "status": "WARN",
+          "notes": [
+            "2026-10-12T20:36:53.118Z reboot: out = dev.send_command('show configuration commands | grep -v ntp | grep -v ssh | grep -v syslog | grep -v console | grep -v login | grep -v config-management |"
+          ]
+        },
+        "isps": {
+          "status": "ok",
+          "notes": []
+        },
+        "frr_text": {
+          "status": "ok",
+          "notes": []
+        },
+        "device_files": {
+          "status": "ok",
+          "notes": []
+        }
+      },
+      "totals": {
+        "result_events": 1,
+        "turns": 35,
+        "duration_ms": 1236158
+      },
+      "fixed": 12,
+      "workarounds_real": [],
+      "workarounds_benign": 0,
+      "cost": 2.770568,
+      "wall_min": 20.6
+    }
+  ]
+}

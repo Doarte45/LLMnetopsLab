@@ -1,0 +1,151 @@
+{
+  "source": "run_030.json",
+  "graded_from": "raw",
+  "timestamp": "2026-10-11T05:54:47.674075+00:00",
+  "fixed": 12,
+  "total": 12,
+  "verdicts": {
+    "fixed": 12
+  },
+  "faults": {
+    "1": {
+      "device": "Hub-B",
+      "title": "Virtual link points at Hub-A's interface IP (172.16.10.9) instead of its router ID",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "2": {
+      "device": "Branch-3",
+      "title": "Forward-chain filter drops OSPF, killing the virtual link that transits Branch-3",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    },
+    "3": {
+      "device": "Branch-2",
+      "title": "MTU 1400 on ether1 (Hub-A eth2 is 1500): adjacency stuck in ExStart/Exchange",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    },
+    "4": {
+      "device": "Hub-A",
+      "title": "Wrong MD5 key on the area 0 link to HQ-Edge ('LabArea0key' vs 'LabArea0Key')",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "5": {
+      "device": "Branch-4",
+      "title": "Area 20 not stub on Branch-4 (type=default vs stub): stub-flag mismatch with Hub-B",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    },
+    "6": {
+      "device": "Hub-A",
+      "title": "Area 10 range 10.1.0.0/24 instead of /16: area 10 LANs leak into area 0",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "7": {
+      "device": "Branch-4",
+      "title": "Return-traffic rule widened to all states: accepts everything above the guest drops",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    },
+    "8": {
+      "device": "HQ-Edge",
+      "title": "Local preference 200 on ISP-B-IN instead of ISP-A-IN: backup default becomes best",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "9": {
+      "device": "HQ-Edge",
+      "title": "default-information originate always (should be conditional)",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "10": {
+      "device": "HQ-Edge",
+      "title": "NAT rule 110 on eth1 instead of eth2: traffic to ISP-B leaves un-NATed",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": "pass"
+    },
+    "11": {
+      "device": "Branch-2",
+      "title": "LAN interface-template not passive: hellos sent toward the hosts",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    },
+    "12": {
+      "device": "B1-PC2",
+      "title": "Host address 10.1.1.11/16 instead of /24: ARPs for the other area 10 LANs",
+      "verdict": "fixed",
+      "config": "clean",
+      "config_diffs": [],
+      "symptoms_failing": [],
+      "symptoms_masked": {},
+      "saved": true,
+      "frr_sync": null
+    }
+  },
+  "workarounds": [],
+  "unsaved": [],
+  "frr_out_of_sync": [],
+  "connection_errors": {},
+  "collateral": [],
+  "perfect": true,
+  "clean": true
+}

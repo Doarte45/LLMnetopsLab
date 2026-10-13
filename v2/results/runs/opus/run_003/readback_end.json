@@ -1,0 +1,611 @@
+{
+  "timestamp": "2026-10-09T21:36:58.872150+00:00",
+  "checks": [
+    {
+      "id": "L3.config.HQ-Edge",
+      "layer": 3,
+      "category": "config",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.HQ-Edge",
+      "layer": 3,
+      "category": "persisted",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.HQ-Edge",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "HQ-Edge",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Hub-A",
+      "layer": 3,
+      "category": "config",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Hub-A",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.Hub-A",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "Hub-A",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Hub-B",
+      "layer": 3,
+      "category": "config",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Hub-B",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.Hub-B",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "Hub-B",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.ISP-A",
+      "layer": 3,
+      "category": "config",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.ISP-A",
+      "layer": 3,
+      "category": "persisted",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.ISP-A",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "ISP-A",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.ISP-B",
+      "layer": 3,
+      "category": "config",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.ISP-B",
+      "layer": 3,
+      "category": "persisted",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "running == saved",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.frr_sync.ISP-B",
+      "layer": 3,
+      "category": "frr_sync",
+      "device": "ISP-B",
+      "status": "pass",
+      "expected": "VyOS config rendered in FRR",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.Branch-1",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-1",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-2",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-2",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-3",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-3",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-3",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.Branch-4",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.Branch-4",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    },
+    {
+      "id": "L3.config.B1-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B1-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B1-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B1-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B1-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B1-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B2-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B2-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B2-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B2-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B2-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B2-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B3-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B3-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B3-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B3-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B3-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B3-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC1",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC1",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC1",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC2",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC2",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC2",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC3",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC3",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC3",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    },
+    {
+      "id": "L3.config.B4-PC4",
+      "layer": 3,
+      "category": "config",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 0
+      },
+      "detail": ""
+    },
+    {
+      "id": "L3.persisted.B4-PC4",
+      "layer": 3,
+      "category": "persisted",
+      "device": "B4-PC4",
+      "status": "pass",
+      "expected": "interfaces file == live state",
+      "observed": "0 differences",
+      "detail": ""
+    }
+  ],
+  "layer3": {
+    "HQ-Edge": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "Hub-A": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "Hub-B": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "ISP-A": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "ISP-B": {
+      "diffs": [],
+      "unsaved": [],
+      "frr": []
+    },
+    "Branch-1": {
+      "diffs": []
+    },
+    "Branch-2": {
+      "diffs": []
+    },
+    "Branch-3": {
+      "diffs": []
+    },
+    "Branch-4": {
+      "diffs": []
+    },
+    "B1-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B1-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B2-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B2-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B3-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B3-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC1": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC2": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC3": {
+      "diffs": [],
+      "unsaved": []
+    },
+    "B4-PC4": {
+      "diffs": [],
+      "unsaved": []
+    }
+  },
+  "connections": {},
+  "summary": {
+    "L3": {
+      "total": 43,
+      "pass": 43,
+      "fail": 0,
+      "flaky": 0,
+      "error": 0,
+      "categories": {
+        "config": {
+          "pass": 19
+        },
+        "persisted": {
+          "pass": 19
+        },
+        "frr_sync": {
+          "pass": 5
+        }
+      }
+    }
+  }
+}

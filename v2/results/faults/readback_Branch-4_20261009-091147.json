@@ -1,0 +1,41 @@
+{
+  "diffs": [
+    {
+      "path": "ospf.areas.20.type",
+      "kind": "changed",
+      "intent": "stub",
+      "live": "normal"
+    }
+  ],
+  "unsaved": [],
+  "frr": [],
+  "raw": {
+    "export": "# 2026-10-09 15:11:46 by RouterOS 7.23.7\n# system id = IWCJ0ti8oIC\n#\n/interface ethernet set [ find default-name=ether1 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether2 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether3 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether4 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether5 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether6 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether7 ] disable-running-check=no\n/interface ethernet set [ find default-name=ether8 ] disable-running-check=no\n/routing ospf instance add name=default-v2 router-id=10.255.2.1\n/routing ospf area add area-id=0.0.0.20 instance=default-v2 name=area20\n/ip address add address=172.16.20.6/30 interface=ether1 network=172.16.20.4\n/ip address add address=10.2.1.1/24 interface=ether2 network=10.2.1.0\n/ip address add address=10.2.2.1/24 interface=ether3 network=10.2.2.0\n/ip address add address=192.168.122.24/24 interface=ether4 network=192.168.122.0\n/ip firewall filter add action=accept chain=forward comment=\"allow established/related\" connection-state=established,related\n/ip firewall filter add action=drop chain=forward comment=\"guest LAN: no access to internal networks\" dst-address=10.0.0.0/8 src-address=10.2.2.0/24\n/ip firewall filter add action=drop chain=forward comment=\"guest LAN: no new connections from internal networks\" dst-address=10.2.2.0/24 src-address=10.0.0.0/8\n/routing ospf interface-template add area=area20 networks=172.16.20.4/30\n/routing ospf interface-template add area=area20 networks=10.2.1.0/24,10.2.2.0/24 passive\n/system identity set name=Branch-4"
+  },
+  "checks": {
+    "L3.config.Branch-4": {
+      "id": "L3.config.Branch-4",
+      "layer": 3,
+      "category": "config",
+      "device": "Branch-4",
+      "status": "fail",
+      "expected": "matches intent",
+      "observed": {
+        "missing": 0,
+        "extra": 0,
+        "changed": 1
+      },
+      "detail": ""
+    },
+    "L3.persisted.Branch-4": {
+      "id": "L3.persisted.Branch-4",
+      "layer": 3,
+      "category": "persisted",
+      "device": "Branch-4",
+      "status": "pass",
+      "expected": null,
+      "observed": null,
+      "detail": "RouterOS persists every change"
+    }
+  }
+}

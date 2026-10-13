@@ -1,0 +1,723 @@
+[
+  {
+    "fault": {
+      "num": 1,
+      "device": "Hub-B",
+      "title": "Virtual link points at Hub-A's interface IP (172.16.10.9) instead of its router ID",
+      "expect": [
+        "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+        "L2.summaries.HQ-Edge",
+        "L2.summaries.Hub-A",
+        "L2.route_coverage.HQ-Edge",
+        "L2.route_coverage.Hub-A",
+        "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+        "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+        "L1.ping.B[12]-PC?->B4-PC[12]",
+        "L1.ping.B4-PC[12]->B[12]-PC?",
+        "L1.ping.B4-PC?->8.8.8.8",
+        "L1.ping.B4-PC?->1.1.1.1",
+        "L1.ping.B[123]-PC?->B4-PC[12]",
+        "L1.ping.B4-PC[12]->B[123]-PC?",
+        "L1.ping.B4-PC?->8.8.8.8",
+        "L1.ping.B4-PC?->1.1.1.1",
+        "L2.summaries.Branch-[123]",
+        "L2.route_coverage.Branch-[1234]",
+        "L2.default_route.Branch-4",
+        "L3.config.Hub-B"
+      ],
+      "may": [
+        "L2.summaries.*",
+        "L2.route_coverage.*",
+        "L2.ospf_route_type.*",
+        "L2.default_route.Hub-B",
+        "L2.default_route.Branch-4",
+        "L2.stub_area.Branch-4"
+      ]
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->B4-PC1",
+          "L1.ping.B1-PC1->B4-PC2",
+          "L1.ping.B1-PC2->B4-PC1",
+          "L1.ping.B1-PC2->B4-PC2",
+          "L1.ping.B2-PC1->B4-PC1",
+          "L1.ping.B2-PC1->B4-PC2",
+          "L1.ping.B2-PC2->B4-PC1",
+          "L1.ping.B2-PC2->B4-PC2",
+          "L1.ping.B3-PC1->B4-PC1",
+          "L1.ping.B3-PC1->B4-PC2",
+          "L1.ping.B3-PC2->B4-PC1",
+          "L1.ping.B3-PC2->B4-PC2",
+          "L1.ping.B4-PC1->1.1.1.1",
+          "L1.ping.B4-PC1->8.8.8.8",
+          "L1.ping.B4-PC1->B1-PC1",
+          "L1.ping.B4-PC1->B1-PC2",
+          "L1.ping.B4-PC1->B2-PC1",
+          "L1.ping.B4-PC1->B2-PC2",
+          "L1.ping.B4-PC1->B3-PC1",
+          "L1.ping.B4-PC1->B3-PC2",
+          "L1.ping.B4-PC2->1.1.1.1",
+          "L1.ping.B4-PC2->8.8.8.8",
+          "L1.ping.B4-PC2->B1-PC1",
+          "L1.ping.B4-PC2->B1-PC2",
+          "L1.ping.B4-PC2->B2-PC1",
+          "L1.ping.B4-PC2->B2-PC2",
+          "L1.ping.B4-PC2->B3-PC1",
+          "L1.ping.B4-PC2->B3-PC2",
+          "L1.ping.B4-PC3->1.1.1.1",
+          "L1.ping.B4-PC3->8.8.8.8",
+          "L1.ping.B4-PC4->1.1.1.1",
+          "L1.ping.B4-PC4->8.8.8.8"
+        ],
+        "L2": [
+          "L2.default_route.Branch-4",
+          "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+          "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+          "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+          "L2.route_coverage.Branch-1",
+          "L2.route_coverage.Branch-2",
+          "L2.route_coverage.Branch-3",
+          "L2.route_coverage.Branch-4",
+          "L2.route_coverage.HQ-Edge",
+          "L2.route_coverage.Hub-A",
+          "L2.summaries.Branch-1",
+          "L2.summaries.Branch-2",
+          "L2.summaries.Branch-3",
+          "L2.summaries.HQ-Edge",
+          "L2.summaries.Hub-A"
+        ],
+        "L3": [
+          "L3.config.Hub-B"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 2,
+      "device": "Branch-3",
+      "title": "Forward-chain filter drops OSPF, killing the virtual link that transits Branch-3",
+      "expect": [
+        "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+        "L2.summaries.HQ-Edge",
+        "L2.summaries.Hub-A",
+        "L2.route_coverage.HQ-Edge",
+        "L2.route_coverage.Hub-A",
+        "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+        "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+        "L1.ping.B[12]-PC?->B4-PC[12]",
+        "L1.ping.B4-PC[12]->B[12]-PC?",
+        "L1.ping.B4-PC?->8.8.8.8",
+        "L1.ping.B4-PC?->1.1.1.1",
+        "L3.config.Branch-3"
+      ],
+      "may": [
+        "L2.summaries.*",
+        "L2.route_coverage.*",
+        "L2.ospf_route_type.*",
+        "L2.default_route.Hub-B",
+        "L2.default_route.Branch-4",
+        "L2.stub_area.Branch-4"
+      ]
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->B4-PC1",
+          "L1.ping.B1-PC1->B4-PC2",
+          "L1.ping.B1-PC2->B4-PC1",
+          "L1.ping.B1-PC2->B4-PC2",
+          "L1.ping.B2-PC1->B4-PC1",
+          "L1.ping.B2-PC1->B4-PC2",
+          "L1.ping.B2-PC2->B4-PC1",
+          "L1.ping.B2-PC2->B4-PC2",
+          "L1.ping.B4-PC1->1.1.1.1",
+          "L1.ping.B4-PC1->8.8.8.8",
+          "L1.ping.B4-PC1->B1-PC1",
+          "L1.ping.B4-PC1->B1-PC2",
+          "L1.ping.B4-PC1->B2-PC1",
+          "L1.ping.B4-PC1->B2-PC2",
+          "L1.ping.B4-PC2->1.1.1.1",
+          "L1.ping.B4-PC2->8.8.8.8",
+          "L1.ping.B4-PC2->B1-PC1",
+          "L1.ping.B4-PC2->B1-PC2",
+          "L1.ping.B4-PC2->B2-PC1",
+          "L1.ping.B4-PC2->B2-PC2",
+          "L1.ping.B4-PC3->1.1.1.1",
+          "L1.ping.B4-PC3->8.8.8.8",
+          "L1.ping.B4-PC4->1.1.1.1",
+          "L1.ping.B4-PC4->8.8.8.8"
+        ],
+        "L2": [
+          "L2.ospf_adjacency.Hub-A--Hub-B.vlink",
+          "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+          "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+          "L2.route_coverage.Branch-1",
+          "L2.route_coverage.Branch-2",
+          "L2.route_coverage.Branch-3",
+          "L2.route_coverage.HQ-Edge",
+          "L2.route_coverage.Hub-A",
+          "L2.route_coverage.Hub-B",
+          "L2.summaries.HQ-Edge",
+          "L2.summaries.Hub-A"
+        ],
+        "L3": [
+          "L3.config.Branch-3"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [
+        "L2.route_coverage.Branch-1",
+        "L2.route_coverage.Branch-2",
+        "L2.route_coverage.Branch-3",
+        "L2.route_coverage.Hub-B"
+      ],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 3,
+      "device": "Branch-2",
+      "title": "MTU 1400 on ether1 (Hub-A eth2 is 1500): adjacency stuck in ExStart/Exchange",
+      "expect": [
+        "L2.ospf_adjacency.Hub-A--Branch-2",
+        "L2.default_route.Branch-2",
+        "L2.route_coverage.Branch-2",
+        "L1.ping.B2-PC?->B[13]-PC?",
+        "L1.ping.B2-PC?->B4-PC[12]",
+        "L1.ping.B[13]-PC?->B2-PC?",
+        "L1.ping.B4-PC[12]->B2-PC?",
+        "L1.ping.B2-PC?->8.8.8.8",
+        "L1.ping.B2-PC?->1.1.1.1",
+        "L3.config.Branch-2"
+      ],
+      "may": [
+        "L2.summaries.*",
+        "L2.route_coverage.*",
+        "L2.ospf_route_type.*",
+        "L2.ospf_stable.Hub-A",
+        "L2.ospf_stable.Branch-2"
+      ]
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->B2-PC1",
+          "L1.ping.B1-PC1->B2-PC2",
+          "L1.ping.B1-PC2->B2-PC1",
+          "L1.ping.B1-PC2->B2-PC2",
+          "L1.ping.B2-PC1->1.1.1.1",
+          "L1.ping.B2-PC1->8.8.8.8",
+          "L1.ping.B2-PC1->B1-PC1",
+          "L1.ping.B2-PC1->B1-PC2",
+          "L1.ping.B2-PC1->B3-PC1",
+          "L1.ping.B2-PC1->B3-PC2",
+          "L1.ping.B2-PC1->B4-PC1",
+          "L1.ping.B2-PC1->B4-PC2",
+          "L1.ping.B2-PC2->1.1.1.1",
+          "L1.ping.B2-PC2->8.8.8.8",
+          "L1.ping.B2-PC2->B1-PC1",
+          "L1.ping.B2-PC2->B1-PC2",
+          "L1.ping.B2-PC2->B3-PC1",
+          "L1.ping.B2-PC2->B3-PC2",
+          "L1.ping.B2-PC2->B4-PC1",
+          "L1.ping.B2-PC2->B4-PC2",
+          "L1.ping.B3-PC1->B2-PC1",
+          "L1.ping.B3-PC1->B2-PC2",
+          "L1.ping.B3-PC2->B2-PC1",
+          "L1.ping.B3-PC2->B2-PC2",
+          "L1.ping.B4-PC1->B2-PC1",
+          "L1.ping.B4-PC1->B2-PC2",
+          "L1.ping.B4-PC2->B2-PC1",
+          "L1.ping.B4-PC2->B2-PC2"
+        ],
+        "L2": [
+          "L2.default_route.Branch-2",
+          "L2.ospf_adjacency.Hub-A--Branch-2",
+          "L2.route_coverage.Branch-1",
+          "L2.route_coverage.Branch-2",
+          "L2.route_coverage.Branch-3",
+          "L2.summaries.Branch-2"
+        ],
+        "L3": [
+          "L3.config.Branch-2"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [
+        "L2.route_coverage.Branch-1",
+        "L2.route_coverage.Branch-3",
+        "L2.summaries.Branch-2"
+      ],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 4,
+      "device": "Hub-A",
+      "title": "Wrong MD5 key on the area 0 link to HQ-Edge ('LabArea0key' vs 'LabArea0Key')",
+      "expect": [
+        "L2.ospf_adjacency.HQ-Edge--Hub-A",
+        "L2.default_route.Hub-A",
+        "L2.default_route.Hub-B",
+        "L2.default_route.Branch-[123]",
+        "L2.route_coverage.HQ-Edge",
+        "L2.summaries.HQ-Edge",
+        "L2.ospf_route_type.HQ-Edge.*",
+        "L2.ospf_route_type.Hub-[AB].0.0.0.0/0",
+        "L1.ping.*->8.8.8.8",
+        "L1.ping.*->1.1.1.1",
+        "L3.config.Hub-A"
+      ],
+      "may": [
+        "L2.ospf_stable.HQ-Edge",
+        "L2.ospf_stable.Hub-A"
+      ]
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->1.1.1.1",
+          "L1.ping.B1-PC1->8.8.8.8",
+          "L1.ping.B1-PC2->1.1.1.1",
+          "L1.ping.B1-PC2->8.8.8.8",
+          "L1.ping.B2-PC1->1.1.1.1",
+          "L1.ping.B2-PC1->8.8.8.8",
+          "L1.ping.B2-PC2->1.1.1.1",
+          "L1.ping.B2-PC2->8.8.8.8",
+          "L1.ping.B3-PC1->1.1.1.1",
+          "L1.ping.B3-PC1->8.8.8.8",
+          "L1.ping.B3-PC2->1.1.1.1",
+          "L1.ping.B3-PC2->8.8.8.8",
+          "L1.ping.B4-PC1->1.1.1.1",
+          "L1.ping.B4-PC1->8.8.8.8",
+          "L1.ping.B4-PC2->1.1.1.1",
+          "L1.ping.B4-PC2->8.8.8.8",
+          "L1.ping.B4-PC3->1.1.1.1",
+          "L1.ping.B4-PC3->8.8.8.8",
+          "L1.ping.B4-PC4->1.1.1.1",
+          "L1.ping.B4-PC4->8.8.8.8"
+        ],
+        "L2": [
+          "L2.default_route.Branch-1",
+          "L2.default_route.Branch-2",
+          "L2.default_route.Branch-3",
+          "L2.default_route.Hub-A",
+          "L2.default_route.Hub-B",
+          "L2.ospf_adjacency.HQ-Edge--Hub-A",
+          "L2.ospf_route_type.HQ-Edge.10.1.0.0/16",
+          "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+          "L2.ospf_route_type.Hub-A.0.0.0.0/0",
+          "L2.ospf_route_type.Hub-B.0.0.0.0/0",
+          "L2.route_coverage.HQ-Edge",
+          "L2.summaries.HQ-Edge"
+        ],
+        "L3": [
+          "L3.config.Hub-A"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 5,
+      "device": "Branch-4",
+      "title": "Area 20 not stub on Branch-4 (type=default vs stub): stub-flag mismatch with Hub-B",
+      "expect": [
+        "L2.ospf_adjacency.Hub-B--Branch-4",
+        "L2.default_route.Branch-4",
+        "L2.route_coverage.Branch-4",
+        "L1.ping.B[123]-PC?->B4-PC[12]",
+        "L1.ping.B4-PC[12]->B[123]-PC?",
+        "L1.ping.B4-PC?->8.8.8.8",
+        "L1.ping.B4-PC?->1.1.1.1",
+        "L3.config.Branch-4"
+      ],
+      "may": [
+        "L2.summaries.*",
+        "L2.route_coverage.*",
+        "L2.ospf_route_type.*",
+        "L2.ospf_stable.Hub-B",
+        "L2.ospf_stable.Branch-4"
+      ]
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->B4-PC1",
+          "L1.ping.B1-PC1->B4-PC2",
+          "L1.ping.B1-PC2->B4-PC1",
+          "L1.ping.B1-PC2->B4-PC2",
+          "L1.ping.B2-PC1->B4-PC1",
+          "L1.ping.B2-PC1->B4-PC2",
+          "L1.ping.B2-PC2->B4-PC1",
+          "L1.ping.B2-PC2->B4-PC2",
+          "L1.ping.B3-PC1->B4-PC1",
+          "L1.ping.B3-PC1->B4-PC2",
+          "L1.ping.B3-PC2->B4-PC1",
+          "L1.ping.B3-PC2->B4-PC2",
+          "L1.ping.B4-PC1->1.1.1.1",
+          "L1.ping.B4-PC1->8.8.8.8",
+          "L1.ping.B4-PC1->B1-PC1",
+          "L1.ping.B4-PC1->B1-PC2",
+          "L1.ping.B4-PC1->B2-PC1",
+          "L1.ping.B4-PC1->B2-PC2",
+          "L1.ping.B4-PC1->B3-PC1",
+          "L1.ping.B4-PC1->B3-PC2",
+          "L1.ping.B4-PC2->1.1.1.1",
+          "L1.ping.B4-PC2->8.8.8.8",
+          "L1.ping.B4-PC2->B1-PC1",
+          "L1.ping.B4-PC2->B1-PC2",
+          "L1.ping.B4-PC2->B2-PC1",
+          "L1.ping.B4-PC2->B2-PC2",
+          "L1.ping.B4-PC2->B3-PC1",
+          "L1.ping.B4-PC2->B3-PC2",
+          "L1.ping.B4-PC3->1.1.1.1",
+          "L1.ping.B4-PC3->8.8.8.8",
+          "L1.ping.B4-PC4->1.1.1.1",
+          "L1.ping.B4-PC4->8.8.8.8"
+        ],
+        "L2": [
+          "L2.default_route.Branch-4",
+          "L2.ospf_adjacency.Hub-B--Branch-4",
+          "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+          "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+          "L2.route_coverage.Branch-1",
+          "L2.route_coverage.Branch-2",
+          "L2.route_coverage.Branch-3",
+          "L2.route_coverage.Branch-4",
+          "L2.route_coverage.HQ-Edge",
+          "L2.route_coverage.Hub-A",
+          "L2.route_coverage.Hub-B",
+          "L2.summaries.Branch-1",
+          "L2.summaries.Branch-2",
+          "L2.summaries.Branch-3",
+          "L2.summaries.HQ-Edge",
+          "L2.summaries.Hub-A"
+        ],
+        "L3": [
+          "L3.config.Branch-4"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [
+        "L2.ospf_route_type.HQ-Edge.10.2.0.0/16",
+        "L2.ospf_route_type.Hub-A.10.2.0.0/16",
+        "L2.route_coverage.Branch-1",
+        "L2.route_coverage.Branch-2",
+        "L2.route_coverage.Branch-3",
+        "L2.route_coverage.HQ-Edge",
+        "L2.route_coverage.Hub-A",
+        "L2.route_coverage.Hub-B",
+        "L2.summaries.Branch-1",
+        "L2.summaries.Branch-2",
+        "L2.summaries.Branch-3",
+        "L2.summaries.HQ-Edge",
+        "L2.summaries.Hub-A"
+      ],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 6,
+      "device": "Hub-A",
+      "title": "Area 10 range 10.1.0.0/24 instead of /16: area 10 LANs leak into area 0",
+      "expect": [
+        "L2.summaries.HQ-Edge",
+        "L3.config.Hub-A"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [],
+        "L2": [
+          "L2.summaries.HQ-Edge"
+        ],
+        "L3": [
+          "L3.config.Hub-A"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 7,
+      "device": "Branch-4",
+      "title": "Return-traffic rule widened to all states: accepts everything above the guest drops",
+      "expect": [
+        "L1.ping.B4-PC[34]->B[123]-PC?",
+        "L1.ping.B4-PC[34]->B4-PC[12]",
+        "L1.ping.B[123]-PC?->B4-PC[34]",
+        "L1.ping.B4-PC[12]->B4-PC[34]",
+        "L3.config.Branch-4"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->B4-PC3",
+          "L1.ping.B1-PC1->B4-PC4",
+          "L1.ping.B1-PC2->B4-PC3",
+          "L1.ping.B1-PC2->B4-PC4",
+          "L1.ping.B2-PC1->B4-PC3",
+          "L1.ping.B2-PC1->B4-PC4",
+          "L1.ping.B2-PC2->B4-PC3",
+          "L1.ping.B2-PC2->B4-PC4",
+          "L1.ping.B3-PC1->B4-PC3",
+          "L1.ping.B3-PC1->B4-PC4",
+          "L1.ping.B3-PC2->B4-PC3",
+          "L1.ping.B3-PC2->B4-PC4",
+          "L1.ping.B4-PC1->B4-PC3",
+          "L1.ping.B4-PC1->B4-PC4",
+          "L1.ping.B4-PC2->B4-PC3",
+          "L1.ping.B4-PC2->B4-PC4",
+          "L1.ping.B4-PC3->B1-PC1",
+          "L1.ping.B4-PC3->B1-PC2",
+          "L1.ping.B4-PC3->B2-PC1",
+          "L1.ping.B4-PC3->B2-PC2",
+          "L1.ping.B4-PC3->B3-PC1",
+          "L1.ping.B4-PC3->B3-PC2",
+          "L1.ping.B4-PC3->B4-PC1",
+          "L1.ping.B4-PC3->B4-PC2",
+          "L1.ping.B4-PC4->B1-PC1",
+          "L1.ping.B4-PC4->B1-PC2",
+          "L1.ping.B4-PC4->B2-PC1",
+          "L1.ping.B4-PC4->B2-PC2",
+          "L1.ping.B4-PC4->B3-PC1",
+          "L1.ping.B4-PC4->B3-PC2",
+          "L1.ping.B4-PC4->B4-PC1",
+          "L1.ping.B4-PC4->B4-PC2"
+        ],
+        "L2": [],
+        "L3": [
+          "L3.config.Branch-4"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 8,
+      "device": "HQ-Edge",
+      "title": "Local preference 200 on ISP-B-IN instead of ISP-A-IN: backup default becomes best",
+      "expect": [
+        "L2.bgp_best.0.0.0.0/0",
+        "L2.bgp_best.8.8.8.8/32",
+        "L2.bgp_backup_default",
+        "L2.default_route.HQ-Edge",
+        "L3.config.HQ-Edge"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [],
+        "L2": [
+          "L2.bgp_backup_default",
+          "L2.bgp_best.0.0.0.0/0",
+          "L2.bgp_best.8.8.8.8/32",
+          "L2.default_route.HQ-Edge"
+        ],
+        "L3": [
+          "L3.config.HQ-Edge"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 9,
+      "device": "HQ-Edge",
+      "title": "default-information originate always (should be conditional)",
+      "expect": [
+        "L3.config.HQ-Edge"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "L3.config.HQ-Edge"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 10,
+      "device": "HQ-Edge",
+      "title": "NAT rule 110 on eth1 instead of eth2: traffic to ISP-B leaves un-NATed",
+      "expect": [
+        "L1.ping.*->1.1.1.1",
+        "L3.config.HQ-Edge"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC1->1.1.1.1",
+          "L1.ping.B1-PC2->1.1.1.1",
+          "L1.ping.B2-PC1->1.1.1.1",
+          "L1.ping.B2-PC2->1.1.1.1",
+          "L1.ping.B3-PC1->1.1.1.1",
+          "L1.ping.B3-PC2->1.1.1.1",
+          "L1.ping.B4-PC1->1.1.1.1",
+          "L1.ping.B4-PC2->1.1.1.1",
+          "L1.ping.B4-PC3->1.1.1.1",
+          "L1.ping.B4-PC4->1.1.1.1"
+        ],
+        "L2": [],
+        "L3": [
+          "L3.config.HQ-Edge"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 11,
+      "device": "Branch-2",
+      "title": "LAN interface-template not passive: hellos sent toward the hosts",
+      "expect": [
+        "L3.config.Branch-2"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [],
+        "L2": [],
+        "L3": [
+          "L3.config.Branch-2"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  },
+  {
+    "fault": {
+      "num": 12,
+      "device": "B1-PC2",
+      "title": "Host address 10.1.1.11/16 instead of /24: ARPs for the other area 10 LANs",
+      "expect": [
+        "L1.ping.B1-PC2->B[23]-PC?",
+        "L1.ping.B[23]-PC?->B1-PC2",
+        "L3.config.B1-PC2"
+      ],
+      "may": []
+    },
+    "grade": {
+      "verdict": "match",
+      "failing_by_layer": {
+        "L1": [
+          "L1.ping.B1-PC2->B2-PC1",
+          "L1.ping.B1-PC2->B2-PC2",
+          "L1.ping.B1-PC2->B3-PC1",
+          "L1.ping.B1-PC2->B3-PC2",
+          "L1.ping.B2-PC1->B1-PC2",
+          "L1.ping.B2-PC2->B1-PC2",
+          "L1.ping.B3-PC1->B1-PC2",
+          "L1.ping.B3-PC2->B1-PC2"
+        ],
+        "L2": [],
+        "L3": [
+          "L3.config.B1-PC2"
+        ]
+      },
+      "missed": [],
+      "unexpected": [],
+      "may_failed": [],
+      "errors": [],
+      "unmatched_globs": []
+    },
+    "error": null,
+    "post_revert_failing": []
+  }
+]

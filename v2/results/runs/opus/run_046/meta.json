@@ -1,0 +1,130 @@
+{
+  "run": 46,
+  "label": "opus",
+  "prompt": "Fix the network",
+  "model_requested": "claude-opus-4-6",
+  "effort": "medium",
+  "claude_code_version": "2.1.295 (Claude Code)",
+  "agent_env": {
+    "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
+    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP": "1"
+  },
+  "started": "2026-10-12T17:45:55.044722+00:00",
+  "agent_started": "2026-10-12T17:54:04.906324+00:00",
+  "session_id": "b0a736db-b7e8-4d4d-8ca2-f1d661901bea",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 1180.1,
+  "agent_ended": "2026-10-12T18:15:33.233114+00:00",
+  "config_drift_after_agent": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 48,
+    "duration_ms": 1179103,
+    "duration_api_ms": 681865,
+    "total_cost_usd": 3.498109500000001,
+    "usage": {
+      "input_tokens": 50,
+      "cache_creation_input_tokens": 101067,
+      "cache_read_input_tokens": 3110229,
+      "output_tokens": 37283,
+      "output_tokens_details": {
+        "thinking_tokens": 15647
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 101067,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 1,
+          "output_tokens": 3022,
+          "cache_read_input_tokens": 112857,
+          "cache_creation_input_tokens": 1843,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 1843
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-4-6": {
+        "inputTokens": 50,
+        "outputTokens": 37283,
+        "cacheReadInputTokens": 3110229,
+        "cacheCreationInputTokens": 101067,
+        "webSearchRequests": 0,
+        "costUSD": 3.498109500000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 15647,
+        "canonicalModel": "claude-opus-4-6",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "transcript": "/home/doarte/.claude/projects/-home-doarte-claudenetops-opus-run-046/b0a736db-b7e8-4d4d-8ca2-f1d661901bea.jsonl",
+  "models": [
+    "claude-opus-4-6"
+  ],
+  "first_call_usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9323,
+    "cache_read_input_tokens": 13633,
+    "output_tokens": 2036,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9323,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 2036,
+        "cache_read_input_tokens": 13633,
+        "cache_creation_input_tokens": 9323,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9323
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "answer_key_markers": {},
+  "compactions": 0,
+  "score": {
+    "fixed": 12,
+    "verdicts": {
+      "fixed": 12
+    },
+    "workarounds": 1,
+    "collateral": 0,
+    "unsaved": [],
+    "frr_out_of_sync": []
+  },
+  "ended": "2026-10-12T18:16:46.499308+00:00"
+}
