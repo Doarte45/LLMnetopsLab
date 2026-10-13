@@ -149,8 +149,9 @@ These are quirks of these specific devices and of driving them through netmiko.
 **All platforms:** give every ping an explicit count, and a timeout where the platform supports one. A ping without a count never returns and hangs the session.
 
 **VyOS** (2026.02 rolling, FRR routing stack):
-- `send_config_set()` leaves the session in configuration mode, so follow it with `commit()` and then `save_config()`. When netmiko leaves configuration mode it discards any uncommitted changes (`exit discard`), so a missing commit fails silently. Confirm that each change landed.
-- In configuration mode, operational commands need a `run` prefix. `save_config()` returns the session to operational mode.
+- Apply changes with `send_config_set(commands, exit_config_mode=False)`, then `commit()`, then save with `send_command_timing("save")` and leave with `send_command_timing("exit")`. Don't use `save_config()`: on this build it raises `ValueError` even though the save succeeds. When netmiko leaves configuration mode it discards any uncommitted changes (`exit discard`), so a missing commit fails silently. Confirm that each change landed.
+- In configuration mode, operational commands need a `run` prefix.
+- VyOS doesn't run the routing protocols itself. On commit it renders the configuration for FRR and reloads FRR. Occasionally a commit succeeds and is saved but never reaches FRR, so the change has no effect. After every commit that touches routing (OSPF, BGP, route-maps), check that FRR has the change with `vtysh -c 'show running-config'`. If it's missing there, remove the change and commit, then apply it again and commit again.
 - `show configuration commands` prints the running config as set-commands, which is the easiest form to compare against the design.
 
 **MikroTik RouterOS 7:**

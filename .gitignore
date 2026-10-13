@@ -48,8 +48,13 @@ desktop.ini
 lab-guide
 scriptshome
 *pdf
-tests
+/v1/tests/
 *hq.py
 Old tests
 site
 planning
+
+# v2 trial runs and fault-development data (not part of the 50-run experiment)
+/v2/results/runs/tryruns/
+/v2/results/faults/dev/
+/v2/results/verify/dev/

@@ -10,7 +10,7 @@
 
 ## Wiring Diagram
 
-![alt text](top1.png)
+![Wiring Diagram](v2.svg)
 
 ## Cable Connections
 
@@ -79,4 +79,4 @@ To apply:
 - **MikroTik:** paste `configs/Mikrotik/CCAccess/<router>-access.rsc` into the terminal. It also removes the DHCP client that the CHR default config puts on ether1, which would otherwise install a distance-1 default route if anything answered it.
 - **Alpine:** paste `configs/Alpine/<pc>.sh` first, then `configs/Alpine/CCAccess/<pc>-access.sh`. The base script rewrites `/etc/network/interfaces`, so re-running it removes eth3 until the access script is run again. SSH logs in as root, so set a root password with `passwd` first. If `openssh` isn't installed, the script runs `apk add openssh`, which needs internet access.
 
-Credentials: VyOS `vyos` / `vyos`, MikroTik `admin` (password set at first login), Alpine `root` (password set with `passwd`).
+Credentials: VyOS `vyos` / `test`, MikroTik `admin` (password set at first login), Alpine `root` (password set with `passwd`).
