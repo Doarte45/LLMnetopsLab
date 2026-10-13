@@ -9,7 +9,7 @@
 
 ## Wiring Diagram
 
-![alt text](v1.png)
+![V1 Topology](v1.svg)
 
 ### Cable Connections
 

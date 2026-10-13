@@ -155,8 +155,23 @@ def extract_duration(entries: list[dict]) -> float | None:
     return None
 
 
-def extract_tokens(entries: list[dict]) -> dict:
-    """Sum token usage across all assistant messages in a run."""
+def extract_tokens(entries: list[dict], count_duplicates: bool = False) -> dict:
+    """Sum token usage across all assistant messages in a run.
+
+    Claude Code writes one transcript entry per content block (thinking, text, each tool
+    call) and repeats the whole message's usage on every one, so each API message is counted
+    once, by message ID. count_duplicates=True sums every entry instead, which roughly doubles
+    the totals; that is how the v1 essay's cost and token figures were computed.
+    """
+    if not count_duplicates:
+        by_id, unkeyed = {}, []
+        for entry in entries:
+            msg_id = entry.get("message", {}).get("id") if entry.get("type") == "assistant" else None
+            if msg_id:
+                by_id[msg_id] = entry
+            else:
+                unkeyed.append(entry)
+        entries = unkeyed + list(by_id.values())
     totals = {
         "input_tokens": 0,
         "output_tokens": 0,
@@ -410,9 +425,9 @@ def extract_behavior(entries: list[dict]) -> dict:
     }
 
 
-def compute_run_metrics(name: str, entries: list[dict]) -> dict:
+def compute_run_metrics(name: str, entries: list[dict], count_duplicates: bool = False) -> dict:
     """Compute all metrics for a single run."""
-    tokens = extract_tokens(entries)
+    tokens = extract_tokens(entries, count_duplicates)
     return {
         "name": name,
         "duration": extract_duration(entries),
@@ -708,6 +723,11 @@ def main():
         "--output", type=Path, default=None,
         help="Write output to file instead of stdout",
     )
+    parser.add_argument(
+        "--count-duplicates", action="store_true",
+        help="Sum usage on every transcript entry instead of once per API message "
+             "(reproduces the v1 essay's figures, which roughly double the true tokens and cost)",
+    )
 
     args = parser.parse_args()
 
@@ -716,7 +736,7 @@ def main():
         sys.exit(1)
 
     transcripts = load_transcripts(args.transcripts_dir)
-    per_run = [compute_run_metrics(name, entries) for name, entries in transcripts.items()]
+    per_run = [compute_run_metrics(name, entries, args.count_duplicates) for name, entries in transcripts.items()]
     aggregate = compute_aggregate(per_run)
 
     if args.format == "json":
