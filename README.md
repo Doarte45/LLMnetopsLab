@@ -8,7 +8,7 @@ The project has two lab versions of increasing complexity:
 |---|---|---|
 | Origin | VyOS translation of Cisco Packet Tracer Activity 11.6.3 (CCNA OSPF troubleshooting) | Original design |
 | Devices | 3 routers, 3 hosts | 9 routers, 10 hosts (19 devices) |
-| Platforms | VyOS, VPCS | VyOS, MikroTik RouterOS 7, Alpine Linux |
+| Platforms | VyOS, VPCS | VyOS, MikroTik RouterOS 7.23.7, Alpine Linux 3.24.2 |
 | Routing | Single-area OSPF, default route from HQ | Multi-area OSPF (areas 0/10/20), ABRs, virtual link, MD5 auth on area 0, totally stubby area, inter-area summarization, ASBR with eBGP to dual ISPs, NAT, guest LAN firewall |
 | Faults | 6 known faults (3 on HQ, 3 on Branch2) | 12 faults across all three platforms, not disclosed to the agent ("may be anywhere in the lab") |
 | Status | Complete — 50 runs captured and analyzed | 50 automated runs (Claude Opus 4.6) captured, validated and analyzed; comparison with v1 in progress |
@@ -348,7 +348,7 @@ jupyter notebook v2/notebooks/visualize_results.ipynb
 - **GNS3** 2.2+
 - **VyOS** 2026.02 rolling (qcow2)
 - **VPCS** (built into GNS3) — v1
-- **MikroTik RouterOS 7** and **Alpine Linux** — v2
+- **MikroTik RouterOS** 7.23.7 and **Alpine Linux** 3.24.2 — v2
 - **Python** 3.10+ with `netmiko`
 - **Claude Code** (v2 runs: WSL install, version pinned and auto-update disabled)
 - **Optional (visualization, v1 and v2):** `pip install -r v1/requirements-viz.txt` (`matplotlib`, `seaborn`, `pandas`, `jupyter`)

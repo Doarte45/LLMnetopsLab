@@ -9,12 +9,13 @@ Per run:
     session_min     the same span on the wall clock (agent_started to agent_ended), which is
                     what transcript timestamps are measured against
     tool_wait       minutes between each tool call and its result (SSH sessions, sleeps,
-                    convergence waits); tool calls never overlap since no message has two
+                    convergence waits), on the transcript's wall clock
     multi_tool      assistant messages that issued more than one tool call at once
     device_calls    Bash calls that talk to the devices (netmiko inline, or a script it wrote)
     threaded_calls  the ones whose code runs devices concurrently (ThreadPoolExecutor, threads)
-    ping_bug_min    first time the agent tested pings with '"0% packet loss" in out', which
-                    also matches "100% packet loss" and makes blocked traffic look reachable
+    ping_bug_min    minutes from agent start to the first time the agent tested pings with
+                    '"0% packet loss" in out', which also matches "100% packet loss" and makes
+                    blocked traffic look reachable
 
 Run from v2/:
     python scripts/validation/transcript_metrics.py                      # results/runs/opus
@@ -81,7 +82,8 @@ def run_metrics(run_dir):
     with open(files["meta"]) as f:
         meta = json.load(f)
     calls = extract_tool_calls(transcript)
-    t0 = parse_ts(calls[0].ts)
+    # Same origin as analyze_runs.py's fix times, so both can go on one timeline
+    t0 = parse_ts(meta["agent_started"])
 
     # A Bash call that runs a script the agent wrote counts with that script's content
     scripts, device_calls, threaded_calls, ping_bug = {}, 0, 0, None

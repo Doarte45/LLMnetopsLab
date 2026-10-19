@@ -48,14 +48,15 @@ FIX_SIGNATURES = {
     4: r"set protocols ospf interface eth0 authentication md5 key-id 1 md5-key '?LabArea0Key",
     5: r"/routing ospf area set .*type=stub",
     6: r"set protocols ospf area 10 range '?10\.1\.0\.0/16",
-    7: r"/ip firewall filter set .*connection-state=established,related",
+    7: r"/ip firewall filter (?:set|add) .*connection-state=established,related",
     8: r"(?:set|delete) policy route-map ISP-[AB]-IN rule 10 set local-preference",
-    9: r"delete protocols ospf default-information originate",
+    9: r"delete protocols ospf default-information\b",
     10: r"set nat source rule 110 outbound-interface (?:name )?'?eth2",
     11: r"interface-template set .*\bpassive",
     12: r"10\.1\.1\.11/24",
 }
-# Workaround-style commands. Only lines that change config count, not show commands.
+# Workaround-style commands. Only lines that change config count, not show commands. BGP resets
+# aren't listed: every run that sent one did it right after fault #8's local-preference fix, to apply it.
 ATTEMPTS = {
     "vtysh config (bypasses VyOS)": r"vtysh\b.*(?:configure|conf t|-c ['\"]?(?:router ospf|area \S+ (?:filter|range)|no area|ip prefix-list))",
     "prefix-list / filter-list": r"(?:set|delete) policy prefix-list|area \S+ filter-list|\bfilter-list (?:in|out)\b",
@@ -63,18 +64,33 @@ ATTEMPTS = {
     "area 20 range/network flap": r"(?:set|delete) protocols ospf area 20 (?:range|network)",
     "OSPF/FRR process restart": r"restart (?:frr|ospf)|systemctl restart|clear ip ospf process|reset ip ospf|"
                                 r"/routing ospf instance (?:disable|enable)",
-    "BGP session reset": r"reset (?:ip )?bgp|clear (?:ip )?bgp",
     "static route": r"(?:set|delete) protocols static|/ip route add\b|\bip route (?:add|replace) (?!default)",
     "mtu-ignore / MTU elsewhere": r"mtu-ignore|set interfaces ethernet eth\d mtu",
     "firewall rule added": r"/ip firewall filter add",
     "redistribute": r"set protocols ospf redistribute",
     "area type change on Hub-B": r"set protocols ospf area 20 area-type (?!stub no-summary)",
 }
+# Branch-4's intended filter rules (configs/Mikrotik/Branch-4.rsc). Re-adding these is the #7 fix (delete the
+# all-states rule, add it back with connection-state) or rebuilding the rule set, not a workaround.
+INTENDED_FW_RULE = re.compile(r"(?=.*action=accept)(?=.*connection-state=established,related)|"
+                              r"(?=.*action=drop)(?=.*src-address=10\.2\.2\.0/24)(?=.*dst-address=10\.0\.0\.0/8)|"
+                              r"(?=.*action=drop)(?=.*src-address=10\.0\.0\.0/8)(?=.*dst-address=10\.2\.2\.0/24)")
 CONFIG_LINE = re.compile(r"\b(?:set|delete|add|remove|disable|enable|configure|conf t|restart|clear|reset|no)\b|"
                          r"\bip (?:addr|route|link)\b|sed -i")
 SHOW_LINE = re.compile(r"\b(?:show|print|export|get|cat|grep)\b")
-AREA20_TOPIC = re.compile(r"10\.2\.[12]\.0/24|10\.1\.0\.0/16.*(?:area 20|Branch-4|stub)|component|not-advertise|"
-                          r"filter-list|area 20 range|summar(?:y|ies|ization).*(?:leak|suppress)|leak", re.I)
+# What a message about the area 20 quirk says: the area 20 /24s showing up in area 10, or
+# 10.1.0.0/16 in totally stubby area 20, and the range/filter attempts at it. "leak" alone isn't
+# enough: fault #6 "leaks" area 10 subnets and the guest firewall "leaks" (the ping check bug).
+AREA20_TOPIC = re.compile(
+    r"10\.2\.(?:[12]|x)(?:\.\w+)?/24|individual (?:\S+ ){0,3}(?:area 20|/24s? from area 20|10\.2)|"
+    r"(?:/24s?|LSAs?|routes|subnets) from area 20|area 20 (?:\S+ ){0,2}(?:/24|LSAs?|routes|subnets)|"
+    r"type.?3 LSAs? (?:\S+ ){0,6}(?:area 10|area 20)|component|not-advertise|filter-list|"
+    r"range (?:\S+ ){0,6}(?:suppress|isn't|is not|doesn't|does not|not working)|suppress|"
+    r"10\.1\.0\.0/16 (?:\S+ ){0,10}(?:leak|despite|shouldn't|should not|no-summary)|"
+    r"(?:leak|despite|shouldn't|should not|no-summary) (?:\S+ ){0,10}10\.1\.0\.0/16", re.I)
+# A message about the firewall only counts when it also names something area 20 specific
+FIREWALL_TOPIC = re.compile(r"guest|firewall|isolation|packet loss|ping|conntrack|connection.track", re.I)
+AREA20_SPECIFIC = re.compile(r"10\.2\.(?:[12]|x)(?:\.\w+)?/24|type.?3|range|area 20|10\.1\.0\.0/16|LSA", re.I)
 
 
 def parse_ts(ts):
@@ -106,7 +122,7 @@ def executed_calls(calls):
 def config_lines(text):
     for line in text.splitlines():
         s = line.strip()
-        if not s or s.startswith("#"):
+        if not s or s.startswith(("#", '"""', "'''")):
             continue
         if CONFIG_LINE.search(s) and not (SHOW_LINE.search(s) and not re.search(r"\b(?:set|delete|add|remove)\b", s)):
             yield s
@@ -131,15 +147,23 @@ def analyze(run_dir):
                 if num not in fixes and re.search(sig, line):
                     fixes[num] = mins(t)
             for label, pat in ATTEMPTS.items():
+                if label == "firewall rule added" and INTENDED_FW_RULE.search(line):
+                    continue
                 if re.search(pat, line, re.I):
                     attempts[label].append((mins(t), line[:140]))
         if fixes and first_change is None:
             first_change = min(fixes.values())
     attempts = {k: v for k, v in attempts.items() if k != "firewall rule added" or any("ospf" not in l for _, l in v)}
 
-    # Time on the area 20 summarization quirk: first to last assistant message about it
-    topic = [mins(parse_ts(ts)) for ts, text in assistant_texts(transcript) if AREA20_TOPIC.search(text)]
+    # Time on the area 20 summarization quirk: first to last assistant message about it, up to the
+    # final report. The report describes faults #5 and #6 in the same terms, and a background task
+    # can wake the agent after it, so counting either would stretch the span to the end of the run.
     report = final_report(stream)
+    texts = assistant_texts(transcript)
+    report_at = next((parse_ts(ts) for ts, text in texts if len(text.strip()) > 200 and text.strip() in report), None)
+    topic = [mins(parse_ts(ts)) for ts, text in texts
+             if (report_at is None or parse_ts(ts) < report_at) and AREA20_TOPIC.search(text)
+             and not (FIREWALL_TOPIC.search(text) and not AREA20_SPECIFIC.search(text))]
     unresolved = ""
     m = re.search(r"#+\s*(?:\d\.\s*)?(?:Unresolved|Uncertain)[^\n]*\n(.*?)(?=\n#+\s|\Z)", report, re.S | re.I)
     if m:
@@ -170,7 +194,7 @@ def analyze(run_dir):
         "left_over": left_over,
         "fixed": score["fixed"],
         "unresolved": unresolved,
-        "report_mentions_quirk": bool(re.search(r"FRR|platform (?:quirk|limitation|behavio)", unresolved or report)),
+        "report_mentions_quirk": bool(re.search(r"FRR|platform (?:quirk|limitation|behavio)", unresolved)),
     }
 
 
@@ -181,7 +205,7 @@ def print_summary(rows):
         tags = []
         short = {"vtysh config (bypasses VyOS)": "vtysh", "prefix-list / filter-list": "filter-list",
                  "range not-advertise": "not-adv", "area 20 range/network flap": "a20-flap",
-                 "OSPF/FRR process restart": "restart", "BGP session reset": "bgp-reset", "static route": "STATIC",
+                 "OSPF/FRR process restart": "restart", "static route": "STATIC",
                  "mtu-ignore / MTU elsewhere": "MTU", "firewall rule added": "fw-add", "redistribute": "REDIST",
                  "area type change on Hub-B": "area-type"}
         tags = [f"{short[k]}x{len(v)}" for k, v in r["attempts"].items()]
@@ -201,7 +225,7 @@ def print_summary(rows):
         print(f"    {c:>2}/{n}  {k}")
     print(f"\nArea 20 summarization quirk: {sum(1 for r in rows if r['area20_minutes'] > 1)}/{n} runs spent time on it "
           f"(median {sorted(r['area20_minutes'] for r in rows)[n // 2]} min); "
-          f"{sum(1 for r in rows if r['report_mentions_quirk'])}/{n} reports blame FRR/the platform")
+          f"{sum(1 for r in rows if r['report_mentions_quirk'])}/{n} reports blame FRR/the platform for something left unresolved")
     print(f"Left over at the end (beyond the platform's empty route-map node): "
           f"{sum(1 for r in rows if r['left_over'])}/{n} runs")
 

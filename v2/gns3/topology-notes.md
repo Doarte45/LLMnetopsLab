@@ -5,8 +5,8 @@
 | Device | GNS3 Node Type | Image |
 |--------|----------------|-------|
 | HQ-Edge, Hub-A, Hub-B, ISP-A, ISP-B | VyOS | vyos-2026.02.12-0026-rolling-generic-amd64 (qcow2) |
-| Branch-1, Branch-2, Branch-3, Branch-4 | Mikrotik RouterOS | RouterOS 7.4... |
-| B1-PC1/2, B2-PC1/2, B3-PC1/2, B4-PC1-4 | Alpine Linux | Alpine... |
+| Branch-1, Branch-2, Branch-3, Branch-4 | Mikrotik RouterOS | RouterOS 7.23.7 |
+| B1-PC1/2, B2-PC1/2, B3-PC1/2, B4-PC1-4 | Alpine Linux | Alpine 3.24.2 |
 
 ## Wiring Diagram
 
