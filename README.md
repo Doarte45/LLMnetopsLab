@@ -25,6 +25,7 @@ v1/                          # Single-area OSPF lab (CCNA 11.6.3 translation)
 ├── gns3/                    # Wiring guide + topology diagram
 ├── scripts/                 # push / verify / parse tooling
 ├── notebooks/               # Result visualizations
+├── figures/                 # PNG exports of the notebook's figures
 └── results/                 # 50 runs: verify JSON + Claude Code transcripts
 v2/                          # Multi-area, multi-vendor OSPF WAN lab
 ├── claude-prompt/CLAUDE.md  # Prompt given to Claude Code
@@ -32,7 +33,7 @@ v2/                          # Multi-area, multi-vendor OSPF WAN lab
 │   ├── VyOS/                # HQ-Edge, Hub-A, Hub-B, ISP-A, ISP-B (+ CCAccess/, broken/)
 │   ├── Mikrotik/            # Branch-1 … Branch-4 (+ CCAccess/, broken/)
 │   └── Alpine/              # 10 host scripts (+ CCAccess/, broken/)
-├── gns3/                    # Wiring guide + topology diagram
+├── gns3/                    # Wiring guide, topology and area 20 leak diagrams (SVG, Excalidraw sources)
 ├── scripts/
 │   ├── connect_devices.py   # SSH reachability check for all 19 devices
 │   ├── verify_lab.py        # Three-layer verifier (reachability, control plane, config intent)
@@ -45,11 +46,11 @@ v2/                          # Multi-area, multi-vendor OSPF WAN lab
 │   ├── validation/          # Run validity checks and transcript analysis
 │   └── tests/               # Offline pytest suite (verifier, scorer, fault catalog)
 ├── notebooks/               # Result visualizations
-├── figures/                 # PNG exports of the notebook's figures
+├── figures/                 # PNG exports of the notebook's figures + area 20 leak diagram
 └── results/
     ├── runs/opus/           # 50 agent runs: transcript, stream, baseline, verify, score, meta
     ├── verify/              # verify_lab.py runs and the correct/broken reference runs
-    └── faults/              # fault_lab.py test runs (run_NNN/fault_NN.json, summary.json)
+    └── faults/              # fault_lab.py reference test runs (reference_single_faults{,_repeat}/fault_NN.json, summary.json)
 ```
 
 ---
@@ -60,19 +61,7 @@ A VyOS translation of the Cisco IOS OSPF troubleshooting lab (Packet Tracer Acti
 
 ### Topology
 
-![v1 topology](v1/gns3/v1.png)
-
-```
-        [PC2]                 [PC1]                 [PC3]
-          |                     |                     |
-       HQ eth0           Branch1 eth0           Branch2 eth0
-    10.10.0.1/22        10.10.4.1/23           10.10.6.1/23
-          |                     |                     |
-         HQ ---eth1---eth1--- Branch1               Branch2
-          |   172.16.7.0/30     |   172.16.7.8/30     |
-          +-----eth2-----------+----------eth1--------+
-              172.16.7.4/30          (via Branch2 eth2)
-```
+![v1 topology](v1/gns3/v1.svg)
 
 ### Errors (answer key)
 
@@ -160,37 +149,28 @@ v2 scales the experiment up to a realistic small-enterprise WAN to test whether 
 
 ![v2 topology](v2/gns3/v2.svg)
 
-```
-     ISP-A  lo 8.8.8.8                       ISP-B  lo 1.1.1.1
-          \  203.0.113.0/30                 /  203.0.113.4/30
-            +---------- HQ-Edge ----------+           ASBR, eBGP + NAT to both ISPs
-                           |  172.16.1.0/30                            area 0
-                         Hub-A                        ABR 0/10
-           +---------------+----------------+
-     172.16.10.0/30   172.16.10.4/30   172.16.10.8/30                  area 10
-           |               |                |
-       Branch-1        Branch-2         Branch-3
-      10.1.1.0/24     10.1.2.0/24      10.1.3.0/24
-                                            |  172.16.20.0/30          area 10
-                                          Hub-B                       ABR 10/20
-                                            |  172.16.20.4/30          area 20
-                                        Branch-4
-                                10.2.1.0/24    10.2.2.0/24
-
-        Hub-A <====== virtual link through area 10 ======> Hub-B
-```
-
 ### Design
 
 - **Area 0:** HQ-Edge ↔ Hub-A. HQ-Edge is the ASBR and originates the default route.
 - **Area 10:** Hub-A ↔ Branch-1/2/3, plus Branch-3 ↔ Hub-B. Hub-A is an ABR.
-- **Area 20:** Hub-B ↔ Branch-4. Hub-B is an ABR. Area 20 is totally stubby: Branch-4 learns only area 20 routes plus a default injected by Hub-B.
+- **Area 20:** Hub-B ↔ Branch-4. Hub-B is an ABR. Area 20 is totally stubby: Branch-4 should learn only area 20 routes plus a default injected by Hub-B (but see [the area 20 summarization leaks](#known-frr-behaviour-area-20-summarization-leaks)).
 - **Authentication:** area 0 uses MD5, including the virtual link (which is logically an area 0 interface).
 - **Virtual link:** Area 20 has no physical path to area 0, so Hub-A and Hub-B form a virtual link across transit area 10.
 - **Summarization:** ABRs summarize area 10 LANs as 10.1.0.0/16 and area 20 LANs as 10.2.0.0/16.
 - **Internet:** eBGP from HQ-Edge (AS 65000) to ISP-A (AS 65100) and ISP-B (AS 65200). Both ISPs send a default route plus their loopback; local preference makes ISP-A primary, and HQ-Edge advertises nothing back. Traffic is masqueraded out both uplinks. ISP loopbacks (8.8.8.8, 1.1.1.1) serve as test targets; 1.1.1.1 is always reached via ISP-B.
 - **Guest LAN:** 10.2.2.0/24 on Branch-4 is internet-only, enforced by a stateful forward-chain filter on Branch-4.
 - **Management:** every device has an out-of-band interface on 192.168.122.0/24 (configs in each platform's `CCAccess/` folder) that is never part of OSPF.
+
+### Known FRR Behaviour: Area 20 Summarization Leaks
+
+![Area 20 summarization leaks](v2/gns3/area20leak.svg)
+
+Even in the correct lab, FRR on Hub-B advertises two sets of routes that the design says should not appear:
+
+- **Leak 1, area 20 /24s in area 10.** Hub-B announces 10.2.1.0/24 and 10.2.2.0/24 into area 10 next to the 10.2.0.0/16 summary. Area 10 is the transit area for the virtual link, and FRR announces every prefix inside a range individually into a transit area. RFC 2328 makes that exception only for the backbone's own ranges.
+- **Leak 2, 10.1.0.0/16 in area 20.** Hub-B originates the area 10 summary into area 20 alongside the default, although area 20 is totally stubby. FRR originates range summaries without checking the area's `no-summary` setting.
+
+Neither leak changes forwarding: every router still sends the traffic to the same next hop. No configuration within the design removes them, so the verifier treats them as part of the correct lab, and they are not one of the 12 faults. They matter for the experiment because the agent finds them while verifying its fixes: chasing them accounts for most of the workaround attempts (Hub-B prefix-lists and filter-lists) and much of the variation in run length, and the final reports differ in how accurately they describe them (see the notebook's figures 4, 5, 7 and 11).
 
 ### Scripts
 
@@ -290,7 +270,7 @@ The score only sees the end state. These scripts check that each finished run is
 | Script | What it does |
 |---|---|
 | `validate_runs.py` | Re-checks every run of a batch: all files present, one session, only the requested model, no compaction or API errors, the lab broke the same way as every other run, no config drift, re-grading gives the saved score, no reads outside the run directory, no changes to management/SSH/ISPs, no device files the verifier can't see (boot scripts, `vtysh write`), and FRR's running-config matches the correct lab. Each check is `ok`, `WARN` or `FAIL`. |
-| `analyze_runs.py` | Fix order and timing per fault, workaround-style commands tried at any point (including ones later removed), time spent on the Hub-B area 20 summarization quirk, leftovers, and what the agent's report says it left unresolved. |
+| `analyze_runs.py` | Fix order and timing per fault, workaround-style commands tried at any point (including ones later removed), time spent on the [Hub-B area 20 summarization leaks](#known-frr-behaviour-area-20-summarization-leaks), leftovers, and what the agent's report says it left unresolved. |
 | `transcript_metrics.py` | Where the time went (API vs tool waits), how parallel the agent worked (multi-tool messages, threaded device scripts), and when it first used the `"0% packet loss" in out` check that also matches 100% loss. |
 
 ```bash
@@ -315,13 +295,13 @@ python -m pytest tests -q        # verifier logic and fault catalog, no lab need
 | | 50 runs |
 |---|---|
 | Faults fixed | 12/12 in every run, no collateral damage, nothing unsaved or out of sync with FRR |
-| Clean end state (no config beyond intent) | 22/50. Most leftovers are the empty `route-map ISP-B-IN rule 10 set` node VyOS keeps after a fix deletes its only leaf (not the agent's choice); 7 runs left agent-made workarounds (Hub-B prefix-list filters for the area 20 summarization quirk, extra Branch-4 firewall rules / connection tracking) |
-| Duration | mean 25.1 min, median 23.1 min (12.3–44.9) |
+| Clean end state (no config beyond intent) | 22/50. Most leftovers are the empty `route-map ISP-B-IN rule 10 set` node VyOS keeps after a fix deletes its only leaf (not the agent's choice); 7 runs left agent-made workarounds (Hub-B prefix-list filters for the [area 20 summarization leaks](#known-frr-behaviour-area-20-summarization-leaks), extra Branch-4 firewall rules / connection tracking) |
+| Duration | mean 25.1 min, median 23.0 min (12.3–44.9) |
 | Cost | $190.53 total, mean $3.81, median $3.60 per run |
 | Turns | median 47 |
 | Validity (`validate_runs.py`) | 39 ok, 10 with warnings, 1 flagged for review. All 50 count: the flag (run 043, isolation) is a false positive, a RouterOS `/export terse \| grep` sent over netmiko and matched as a host command |
 
-Plots are generated in `notebooks/visualize_results.ipynb` (validation matrix, score and cleanliness, duration and cost, run anatomy, fix timing, workaround attempts, time breakdown, parallelism, ping-check bug, report accuracy); PNG exports are in `figures/`:
+Plots are generated in `notebooks/visualize_results.ipynb` (validation matrix, score and cleanliness, duration and cost, run anatomy, duration vs. time on the summarization leaks, fix timing, workaround attempts, time breakdown, parallelism, ping-check bug, report accuracy); PNG exports are in `figures/`, alongside `area20_leaks.png`, a PNG of the [area 20 leak diagram](#known-frr-behaviour-area-20-summarization-leaks):
 
 ```bash
 pip install -r v1/requirements-viz.txt

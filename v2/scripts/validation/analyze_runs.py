@@ -78,6 +78,8 @@ INTENDED_FW_RULE = re.compile(r"(?=.*action=accept)(?=.*connection-state=establi
 CONFIG_LINE = re.compile(r"\b(?:set|delete|add|remove|disable|enable|configure|conf t|restart|clear|reset|no)\b|"
                          r"\bip (?:addr|route|link)\b|sed -i")
 SHOW_LINE = re.compile(r"\b(?:show|print|export|get|cat|grep)\b")
+# A call that opens an interactive vtysh shell, after which config is sent one line per call
+VTYSH_SESSION = re.compile(r"send_command(?:_timing)?\(\s*['\"](?:sudo )?vtysh['\"]\s*[,)]")
 # What a message about the area 20 quirk says: the area 20 /24s showing up in area 10, or
 # 10.1.0.0/16 in totally stubby area 20, and the range/filter attempts at it. "leak" alone isn't
 # enough: fault #6 "leaks" area 10 subnets and the guest firewall "leaks" (the ping check bug).
@@ -120,12 +122,21 @@ def executed_calls(calls):
 
 
 def config_lines(text):
+    """Config-changing lines. A line inside an interactive vtysh session (opened with
+    send_command_timing('vtysh') and then fed 'conf t', 'router ospf', ... one call at a time) is
+    prefixed with 'vtysh ' so the vtysh pattern sees it. print( is ignored when deciding whether a
+    line is a show command, so print(conn.send_command("<config>")) still counts."""
+    in_vtysh = False
     for line in text.splitlines():
         s = line.strip()
         if not s or s.startswith(("#", '"""', "'''")):
             continue
-        if CONFIG_LINE.search(s) and not (SHOW_LINE.search(s) and not re.search(r"\b(?:set|delete|add|remove)\b", s)):
-            yield s
+        if VTYSH_SESSION.search(s):
+            in_vtysh = True
+            continue
+        shown = SHOW_LINE.search(re.sub(r"\bprint\(", "", s))
+        if CONFIG_LINE.search(s) and not (shown and not re.search(r"\b(?:set|delete|add|remove)\b", s)):
+            yield f"vtysh {s}" if in_vtysh and "vtysh" not in s else s
 
 
 def analyze(run_dir):
