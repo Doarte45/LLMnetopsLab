@@ -48,6 +48,7 @@ desktop.ini
 lab-guide
 scriptshome
 *pdf
+!/v1/paper/LLMnetopsLabV1.pdf
 /v1/tests/
 *hq.py
 Old tests

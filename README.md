@@ -26,6 +26,7 @@ v1/                          # Single-area OSPF lab (CCNA 11.6.3 translation)
 ├── scripts/                 # push / verify / parse tooling
 ├── notebooks/               # Result visualizations
 ├── figures/                 # PNG exports of the notebook's figures
+├── paper/LLMnetopsLabV1.pdf # v1 write-up (unpublished working paper)
 └── results/                 # 50 runs: verify JSON + Claude Code transcripts
 v2/                          # Multi-area, multi-vendor OSPF WAN lab
 ├── claude-prompt/CLAUDE.md  # Prompt given to Claude Code
@@ -58,6 +59,8 @@ v2/                          # Multi-area, multi-vendor OSPF WAN lab
 ## v1 — Single-Area OSPF (CCNA 11.6.3, VyOS Edition)
 
 A VyOS translation of the Cisco IOS OSPF troubleshooting lab (Packet Tracer Activity 11.6.3), built in GNS3 with VyOS (`vyos-2026.02.12-0026-rolling-generic-amd64`) and VPCS. Three routers (HQ, Branch1, Branch2) run OSPF but contain **6 intentional errors**. Full wiring details are in [`v1/gns3/topology-notes.md`](v1/gns3/topology-notes.md).
+
+The full write-up of the v1 study (method, results and failure analysis) is in [`v1/paper/LLMnetopsLabV1.pdf`](v1/paper/LLMnetopsLabV1.pdf). It is an unpublished working paper; its cost and token figures were corrected in October 2026 (see the correction note below).
 
 ### Topology
 
@@ -113,9 +116,9 @@ python scripts/parse_transcripts.py results/cctranscripts/
 
 Both parsers accept `--format json|table` and `--output <path>`.
 
-**Token and cost correction (2026-10-08).** Claude Code writes one transcript entry per content block of a response (thinking, text, each tool call) and repeats the response's full usage on each one. `parse_transcripts.py` originally summed every entry, which roughly doubled tokens and cost. It now counts each API message once (verified against Claude Code's own session totals). `--count-duplicates` reproduces the original numbers, which are the ones in the v1 essay:
+**Token and cost correction (2026-10-08).** Claude Code writes one transcript entry per content block of a response (thinking, text, each tool call) and repeats the response's full usage on each one. `parse_transcripts.py` originally summed every entry, which roughly doubled tokens and cost. It now counts each API message once (verified against Claude Code's own session totals). `--count-duplicates` reproduces the original numbers, which were in the first version of the v1 essay. The current essay uses the corrected figures:
 
-| | Original (essay) | Corrected |
+| | Original | Corrected |
 |---|---|---|
 | Total cost, 50 runs | $40.67 | $19.89 |
 | Mean / median per run | $0.81 / $0.72 | $0.40 / $0.34 |
@@ -132,7 +135,7 @@ python results/cctranscripts/extract_messages.py results/cctranscripts/r037.json
 
 ### Results and Visualization
 
-`results/` holds all 50 captured runs (`verify/run_001.json … run_050.json`, `cctranscripts/r001.jsonl … r050.jsonl`). Plots are generated in `notebooks/visualize_results.ipynb`; PNG exports are in `figures/`. The cost figures exist twice: `fig3_duration_cost` and `fig4_cost_breakdown` as published, and `*_corrected` versions with the token correction above:
+`results/` holds all 50 captured runs (`verify/run_001.json … run_050.json`, `cctranscripts/r001.jsonl … r050.jsonl`). Plots are generated in `notebooks/visualize_results.ipynb`; PNG exports are in `figures/`. The cost figures exist twice: `fig3_duration_cost` and `fig4_cost_breakdown` with the original token counting, and `*_corrected` versions with the token correction above (the ones used in the essay):
 
 ```bash
 pip install -r requirements-viz.txt

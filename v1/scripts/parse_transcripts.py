@@ -161,7 +161,7 @@ def extract_tokens(entries: list[dict], count_duplicates: bool = False) -> dict:
     Claude Code writes one transcript entry per content block (thinking, text, each tool
     call) and repeats the whole message's usage on every one, so each API message is counted
     once, by message ID. count_duplicates=True sums every entry instead, which roughly doubles
-    the totals; that is how the v1 essay's cost and token figures were computed.
+    the totals; that is how the first version of the v1 essay's cost and token figures were computed.
     """
     if not count_duplicates:
         by_id, unkeyed = {}, []
@@ -726,7 +726,7 @@ def main():
     parser.add_argument(
         "--count-duplicates", action="store_true",
         help="Sum usage on every transcript entry instead of once per API message "
-             "(reproduces the v1 essay's figures, which roughly double the true tokens and cost)",
+             "(reproduces the original v1 essay figures, which roughly double the true tokens and cost)",
     )
 
     args = parser.parse_args()
