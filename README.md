@@ -164,6 +164,27 @@ v2 scales the experiment up to a realistic small-enterprise WAN to test whether 
 - **Guest LAN:** 10.2.2.0/24 on Branch-4 is internet-only, enforced by a stateful forward-chain filter on Branch-4.
 - **Management:** every device has an out-of-band interface on 192.168.122.0/24 (configs in each platform's `CCAccess/` folder) that is never part of OSPF.
 
+### Faults (answer key)
+
+The agent is not told about any of these. They are defined in [`v2/scripts/faults/catalog.py`](v2/scripts/faults/catalog.py), which also generates `configs/*/broken/`; the design rationale is in [`v2/planning/faults-and-verifier.md`](v2/planning/faults-and-verifier.md). "Caught by" is which [verifier layers](#scripts) fail with the fault on its own.
+
+| # | Device | Fault | Broken Value | Correct Value | Symptom | Caught by |
+|---|--------|-------|-------------|---------------|---------|-----------|
+| 1 | Hub-B | Virtual link points at Hub-A's interface IP, not its router ID | `area 10 virtual-link 172.16.10.9` | `area 10 virtual-link 10.255.0.2` | Virtual link never forms, Hub-B stops acting as an ABR, area 20 cut off | L1, L2, L3 |
+| 2 | Branch-3 | Forward-chain filter drops OSPF on the virtual link's transit router | `/ip firewall filter add chain=forward protocol=ospf action=drop` | (absent) | All physical adjacencies Full, only the virtual link is down; Branch-1/2 and area 0 lose area 20 | L1, L2, L3 |
+| 3 | Branch-2 | MTU mismatch with Hub-A eth2 | ether1 `mtu=1400` | `mtu=1500` | Adjacency stuck in ExStart/Exchange, Branch-2's LAN cut off | L1, L2, L3 |
+| 4 | Hub-A | Wrong MD5 key on the area 0 link to HQ-Edge | `md5-key 'LabArea0key'` | `md5-key 'LabArea0Key'` | HQ-Edge ↔ Hub-A adjacency down: no default route or internet behind Hub-A | L1, L2, L3 |
+| 5 | Branch-4 | Area 20 not stub | `type=default` | `type=stub` | Stub-flag mismatch in hellos, no adjacency with Hub-B | L1, L2, L3 |
+| 6 | Hub-A | Wrong area 10 range | `area 10 range 10.1.0.0/24` | `area 10 range 10.1.0.0/16` | Area 10 /24s leak into area 0 unsummarized; all pings still work | L2, L3 |
+| 7 | Branch-4 | Return-traffic rule widened to all states | `connection-state` removed | `connection-state=established,related` | Guest hosts reach internal networks (only the 32 expected-deny pairs change) | L1, L3 |
+| 8 | HQ-Edge | Local preference on the wrong ISP | `ISP-B-IN rule 10 set local-preference 200` | on `ISP-A-IN` | ISP-B's default becomes best; pings unaffected (ISP loopback /32s win over the default) | L2, L3 |
+| 9 | HQ-Edge | Unconditional default origination | `default-information originate always` | `default-information originate` | Nothing breaks until both uplinks fail, then traffic blackholes at HQ-Edge | L3 |
+| 10 | HQ-Edge | NAT rule on the wrong uplink | `nat source rule 110 outbound-interface name eth1` | `eth2` | Traffic to 1.1.1.1 leaves eth2 un-NATed, so 1.1.1.1 is unreachable; 8.8.8.8 still works | L1, L3 |
+| 11 | Branch-2 | LAN interface-template not passive | `networks=10.1.2.0/24` | `networks=10.1.2.0/24 passive` | Hellos sent toward the hosts; nothing visibly breaks | L3 |
+| 12 | B1-PC2 | Wrong host prefix length | `10.1.1.11/16` | `10.1.1.11/24` | ARPs for 10.1.2.x/10.1.3.x as on-link, can't reach other area 10 LANs | L1, L3 |
+
+#1 and #2 mask each other: both take down the virtual link, so fixing either one alone leaves area 20 broken. Several symptoms also overlap (e.g. #4 hides #10's 1.1.1.1 failures), which `score_run.py` accounts for when grading each fault.
+
 ### Known FRR Behaviour: Area 20 Summarization Leaks
 
 ![Area 20 summarization leaks](v2/gns3/area20leak.svg)
